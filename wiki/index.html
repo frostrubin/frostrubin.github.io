@@ -1,0 +1,20 @@
+---
+layout: page
+title: Wiki
+---
+
+{% for tag in site.categories | sort %} 
+  <ul class="post-list">
+    {% assign pages_list = tag[1] | where: "category", "wiki" |sort %}  
+    {% for post in pages_list %}
+      {% if post.title != null %}
+        {% if group == null or group == post.group %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% assign pages_list = nil %}
+    {% assign group = nil %}
+  </ul>
+{% endfor %}
+</div>

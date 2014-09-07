@@ -1,0 +1,24 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            "wiki ツ"
+tagline:          'My personal wiki'
+description:      'A mixture of code, recipes and other stuff ...'
+url:              http://frostrubin.github.io
+baseurl:          /
+
+author:
+  name:           'Bernhard Seeger'
+
+paginate:         5
+
+# Custom vars
+version:          0.0.1
+
+github:
+  repo:           https://github.com/frostrubin/frostrubin

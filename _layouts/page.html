@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div class="page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% assign filename = page.path | replace:'_posts','images' | replace:'.md','' | append:'.jpg' | prepend:'/' %}
+  <img src="{{ filename }}" onError="this.style.display = 'none';">
+
+  {% assign filename = filename | replace:'.jpg','.png' %}
+  <img src="{{ filename }}" onError="this.style.display = 'none';">
+
+  {{ content }}
+</div>
