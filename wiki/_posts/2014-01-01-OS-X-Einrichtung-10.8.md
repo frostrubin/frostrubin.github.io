@@ -177,3 +177,8 @@ MP3
 
 ### Mavericks Tipp:
 [Java 7 Usage HowTo](http://mosx.tumblr.com/post/64402950499/os-x-tip-execute-java-apps-like-minecraft-or)
+
+### Server Connections
+Connect to some servers to get them into the recent server list
+- [https://webdav.mediencenter.t-online.de](https://webdav.mediencenter.t-online.de)
+- [https://webdav.hidrive.strato.com](https://webdav.hidrive.strato.com)
