@@ -23,7 +23,7 @@ category: wiki
 
 ### Installation
 
-1. Den Mac mit gedrückter ALT-Taste starten. Vom USB Stick booten.
+1. Den Mac mit gedrückter ALT-Taste starten. Vom USB Stick booten
 2. Neu partitionieren, OS X installieren
 3. Administratorkonto anlegen & keine iCloud Login Daten eingeben
  
@@ -44,7 +44,7 @@ category: wiki
 - `Accessibility > Reduce Transparency` setzen
 - `Security & Privacy > Advanced` Apple Remote ausschalten
 - In den Time Machine Preferences bestimmte Ordner ausschließen: `/Applications`, `~/Library/Caches`, `/Library/Caches`, `~/Documents`
-- In den Time Machine den Schalter auf `Off` setzen
+- In den Time Machine Einstellungen den Schalter auf `Off` setzen
 - Drucker anschließen und Treiber per Software Update installieren
  
 ## Homeverzeichnis einrichten
