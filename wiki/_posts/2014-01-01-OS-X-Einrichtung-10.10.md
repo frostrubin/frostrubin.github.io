@@ -76,13 +76,13 @@ category: wiki
      defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool YES
  
     # Inhalt des Docks kann nicht mehr verändert werden
-    defaults write com.apple.Dock contents-immutable -bool true
+    defaults write com.apple.Dock contents-immutable -bool YES
 
     # Größe des Docks kann nicht mehr verändert werden
-    defaults write com.apple.Dock size-immutable -bool true
+    defaults write com.apple.Dock size-immutable -bool YES
 
     # Position des Docks kann nicht mehr verändert werden
-    defaults write com.apple.Dock position-immutable -bool true
+    defaults write com.apple.Dock position-immutable -bool YES
 
 ## Finder 
 
@@ -90,13 +90,10 @@ category: wiki
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
  
     # Erweiterter "Drucken" Dialog als Standard
-    defaults write -g PMPrintingExpandedStateForPrint -bool TRUE
+    defaults write -g PMPrintingExpandedStateForPrint -bool YES
  
     # Erweiterter "Speichern unter" Dialog als Standard
-    defaults write -g NSNavPanelExpandedStateForSaveMode -bool TRUE
-
-    # Per default lokal (nicht iCloud) speichern
-    defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool FALSE
+    defaults write -g NSNavPanelExpandedStateForSaveMode -bool YES
 
 # Werte setzen
 
