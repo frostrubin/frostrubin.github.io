@@ -15,6 +15,6 @@ category: wiki
 6. Um zu verhindern, dass `GET /DevMgmt/DiscoveryTree.xml HTTP/1.1` Seiten gedruckt werden, kann man nun noch unter `Start > Geräte und Drucker` einen Rechtsklick auf den Drucker machen. In den `Druckereigenschaften` im Reiter `Geräteeinstellungen` kann man nun unter `Installierbare Optionen > Druckerstatusbenachrichtigung` die Einstellung auf _Deaktiviert_ setzen.
 
 # Quellen
-[Thomas Lutz](http://www.thomaslutz.de/2009/12/18/windows-7-64bit-hp-color-laserjet-2605dn/)
-[SolveYourTech - Youtube](http://www.youtube.com/watch?v=ibISyLRq3B8)
+- [Thomas Lutz](http://www.thomaslutz.de/2009/12/18/windows-7-64bit-hp-color-laserjet-2605dn/)
+- [SolveYourTech - Youtube](http://www.youtube.com/watch?v=ibISyLRq3B8)
 
