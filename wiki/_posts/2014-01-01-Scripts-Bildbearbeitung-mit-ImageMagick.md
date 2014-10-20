@@ -27,7 +27,7 @@ Wirklich gute Scripte gibt es bei [FMW Concepts](http://www.fmwconcepts.com/imag
 ## CD Cover resizen
 
     #!/bin/bash
-
+    
     size=65
     SAVEIFS=$IFS
     IFS=$(echo -en "\n\b")
@@ -44,8 +44,8 @@ Wirklich gute Scripte gibt es bei [FMW Concepts](http://www.fmwconcepts.com/imag
 
 Mithilfe von [ExifTool](http://www.sno.phy.queensu.ca/~phil/exiftool) kann man EXIF Daten bearbeiten.
 
-#!/bin/bash
- 
+    #!/bin/bash
+
     size=65
     SAVEIFS=$IFS
     IFS=$(echo -en "\n\b")
