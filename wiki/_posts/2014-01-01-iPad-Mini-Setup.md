@@ -6,14 +6,18 @@ category: wiki
 ---
 
 ## Backup
+
 A backup of the iPads data can be created via iTunes: connect it with a cable and rightclick on the device. Choose "Backup".
 
 ## Account Setup
+
 Whilst setting up the iPad, choose the secondary iCloud Account.    
 Afterwards, goto `Settings > iTunes & App Stores` and change the Account to purchase Apps manually to the primary iCloud Account.
 
 ### Accounts
+
 #### iCloud
+
 Use the secondary iCloud account to sync
 - Reminders
 - Safari
@@ -22,12 +26,14 @@ Use the secondary iCloud account to sync
 - Find my iPad
 
 #### CardDAV
+
 In `Settings > Mail, Contacts, Calendard > Add Account...` choose `Other > Add CardDAV Account`.   
 - Server: google.com
 - Account: youremailaddress@gmail.com
 - Passwort: ...
 
 #### CalDAV
+
 In `Settings > Mail, Contacts, Calendard > Add Account...` choose `Other > Add CalDAV Account`.   
 - Server: google.com
 - Account: youremailaddress@gmail.com
@@ -36,6 +42,7 @@ In `Settings > Mail, Contacts, Calendard > Add Account...` choose `Other > Add C
 In order to sync more than one calendar, head over to [this site](https://www.google.com/calendar/iphoneselect) to customize your sync settings.
 
 ## Settings
+
 - Create a Do not Disturb time
 - Under `Brightness & Wallpaper` turn off `Auto-Brightness`
 - Under `iCloud > Storage & Backup > Manage Storage > $DeviceName` disable `Camera Roll` Backups
@@ -44,7 +51,9 @@ In order to sync more than one calendar, head over to [this site](https://www.go
 - Under `Do Not Disturb` enable `Silence: Always`
 
 ## App Installation
+
 ### Mandatory Apps
+
 - [iBooks](https://itunes.apple.com/de/app/ibooks/id364709193?mt=8)
 - [Podcasts](https://itunes.apple.com/de/app/podcasts/id525463029?mt=8)
   - [Retinacast](http://feeds.feedburner.com/retinacast-podcast-aac)
@@ -86,6 +95,7 @@ In order to sync more than one calendar, head over to [this site](https://www.go
 - [Super Stickman Golf 2](https://itunes.apple.com/de/app/super-stickman-golf-2/id585259203?mt=8)
 
 ### Optional Apps
+
 - StarDunkGold
 - Tiny Wings
 - Wiki Hunt
