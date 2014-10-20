@@ -4,12 +4,12 @@ title: Zeichenliste
 layout: page
 category: wiki
 ---
-# Zeichenliste #
+# Zeichenliste
 
-** → ← ↑ ↓ ⌃ ⇧ ⌥ ⌘ ⏎ ⌅ ⎋ ⇥ ⇪ ⌫ ⏏ ⇞ ⇟ ␣ ➚**
+     → ← ↑ ↓ ⌃ ⇧ ⌥ ⌘ ⏎ ⌅ ⎋ ⇥ ⇪ ⌫ ⏏ ⇞ ⇟ ␣ ➚
 
-**½ ⅓ ¼ ⅕ ⅙ ⅛ ⅔ ⅖ ¾ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞**
+    ½ ⅓ ¼ ⅕ ⅙ ⅛ ⅔ ⅖ ¾ ⅗ ⅜ ⅘ ⅚ ⅝ ⅞
 
-**⌀ Σ ¢ €**
+    ⌀ Σ ¢ €
 
-    ( ͡° ͜ʖ ͡°)            ツ
+    ( ͡° ͜ʖ ͡°)   ツ
