@@ -6,6 +6,7 @@ category: wiki
 ---
 
 ## Lieferumfang
+
 - Mac Mini aus 2007
 - MiniMax Festplatte die unten drunter passt - 500GB Kapazität
 - Roter 8GB USB Stick mit Mac OS X Snow Leopard 10.6.0 + Combo Update auf 10.6.8
@@ -14,6 +15,7 @@ category: wiki
 - Die Daten des Umzuges - Steuererklärung + Familienbilder - liegen als Backup auf der externen Festplatte
 
 ## Installation von OS X
+
 - Den USB Stick anschließen und mit gedrückter Alt-Taste davon Booten
 - Festplatte formatieren, Snow Leopard installieren, nur das aller nötigste auswählen
 - Nach der Installation den USB Stick stecken lassen und das Combo Update auf 10.6.8 installieren
@@ -21,6 +23,7 @@ category: wiki
 - Der Administrator Account hat das Passwort: ____________________
 
 ## Windows XP installieren
+
 - Den Bootcamp Assistenten starten, Treiber CD überspringen (liegt bereits bei)
 - Windows XP installieren
 - Der Administrator Account hat das Passwort: ____________________
