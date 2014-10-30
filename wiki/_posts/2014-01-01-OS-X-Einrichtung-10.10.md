@@ -57,8 +57,10 @@ category: wiki
     $ sudo chmod 755 /pub
     $ sudo chown bernhard:staff /pub
 
-    # Symlink setzen
-    $ ln -s /Users/bernhard/Unix/bash_profile.sh /Users/bernhard/.bash_profile
+    # Bash Dateien wiederherstellen
+    # 1. ~/.bash_profile
+    # 2. ~/.ppdirs.txt
+    # 3. ~/.my_helpers.sh
 
 ## User-Interface aufhübschen
  
