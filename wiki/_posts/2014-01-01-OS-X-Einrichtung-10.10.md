@@ -114,7 +114,7 @@ category: wiki
 - [GitHub](http://mac.github.com/) + Command Line Tools während Installation wählen
 - [Google Chrome](https://www.google.com/landing/chrome/beta/)
   - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/)
-- [gsutil](https://cloud.google.com/storage/docs/gsutil_install)
+- [s3cmd](http://s3tools.org)
 - [Handbrake](http://handbrake.fr/downloads.php)
 - [JDownloader](http://jdownloader.org/download/index)
 - [Max](http://sbooth.org/Max)
