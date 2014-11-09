@@ -111,7 +111,7 @@ category: wiki
 - [Dropbox](http://www.getdropbox.com)
   - Upload Rate nicht limitieren
 - [Firefox](http://www.mozilla.com/en-US/firefox/personal.html) + Adblock Plus
-- [GitHub](http://mac.github.com/) + Command Line Tools während Installation wählen
+- [GitHub](http://mac.github.com/)
 - [Google Chrome](https://www.google.com/landing/chrome/beta/)
   - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/)
 - [s3cmd](http://s3tools.org)
