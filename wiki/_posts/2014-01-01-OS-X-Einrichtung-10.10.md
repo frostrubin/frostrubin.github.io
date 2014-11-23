@@ -44,7 +44,7 @@ category: wiki
 - `Accessibility > Reduce Transparency` setzen
 - `Security & Privacy > Advanced` Apple Remote ausschalten
 - In den Time Machine Preferences bestimmte Ordner ausschließen: `/Applications`, `~/Library/Caches`, `/Library/Caches`, `~/Documents`
-- In den Time Machine Einstellungen den Schalter auf `Off` setzen
+- In den Time Machine Preferences `Entryption` einschalten
 - Drucker anschließen und Treiber per Software Update installieren
  
 ## Homeverzeichnis einrichten
