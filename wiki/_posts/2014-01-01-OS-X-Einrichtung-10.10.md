@@ -8,10 +8,9 @@ category: wiki
 ## Datensicherung
 
 1. `my sync` ist ausgeführt
-2. Time Machine Backup ist erstellt
-3. Firefox Passwörter exportieren
-4. Dateien aus `~` sichern
-5. WLAN Passwort aufschreiben
+2. Firefox Passwörter exportieren
+3. Dateien aus `~` sichern
+4. WLAN Passwort aufschreiben
 
 ## Systeminstallation
 
@@ -43,8 +42,7 @@ category: wiki
 - `Accessibility > Enable Dragging with Drag Lock` setzen
 - `Accessibility > Reduce Transparency` setzen
 - `Security & Privacy > Advanced` Apple Remote ausschalten
-- In den Time Machine Preferences bestimmte Ordner ausschließen: `/Applications`, `~/Library/Caches`, `/Library/Caches`, `~/Documents`
-- In den Time Machine Preferences `Entryption` einschalten
+- `Security & Privacy > FileVault` einschalten
 - Drucker anschließen und Treiber per Software Update installieren
  
 ## Homeverzeichnis einrichten
