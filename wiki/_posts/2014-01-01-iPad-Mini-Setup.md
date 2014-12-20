@@ -7,7 +7,10 @@ category: wiki
 
 ## Backup
 
-A backup of the iPads data can be created via iTunes: connect it with a cable and rightclick on the device. Choose "Backup".
+- A backup of the iPads data can be created via iTunes: connect it with a cable and rightclick on the device. Choose "Backup".
+- Or trust the online iCloud Backup.
+
+- Deactivate Google Authenticator enabled accounts temporarily. The Authenticator data is not backed up!
 
 ## Account Setup
 
@@ -19,18 +22,11 @@ Afterwards, goto `Settings > iTunes & App Stores` and change the Account to purc
 #### iCloud
 
 Use the secondary iCloud account to sync
-- Reminders
+- iCloud Drive
 - Safari
 - Notes
-- Documents & Data
+- Backup
 - Find my iPad
-
-#### CardDAV
-
-In `Settings > Mail, Contacts, Calendard > Add Account...` choose `Other > Add CardDAV Account`.   
-- Server: google.com
-- Account: youremailaddress@gmail.com
-- Passwort: ...
 
 #### CalDAV
 
