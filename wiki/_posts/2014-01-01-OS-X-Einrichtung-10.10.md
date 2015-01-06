@@ -100,6 +100,9 @@ category: wiki
     killall Dock
     killall Finder
 
+## Terminal Absichern
+Terminal.app aufrufen und dann `Terminal > Secure Keyboard Entry` wählen. Dadurch können keine Prozesse die Terminal Eingaben abfangen um Passwörter abzugreifen.
+
 ## Software-Installation
 
 ### Obligatorische Software
