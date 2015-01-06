@@ -100,9 +100,6 @@ category: wiki
     killall Dock
     killall Finder
 
-## Terminal Absichern
-Terminal.app aufrufen und dann `Terminal > Secure Keyboard Entry` wählen. Dadurch können keine Prozesse die Terminal Eingaben abfangen um Passwörter abzugreifen.
-
 ## Software-Installation
 
 ### Obligatorische Software
@@ -127,6 +124,7 @@ Terminal.app aufrufen und dann `Terminal > Secure Keyboard Entry` wählen. Dadur
 
 ### Terminal Settings
 
+- Terminal.app aufrufen und `Terminal > Secure Keyboard Entry` wählen
 - Font: Courier 13pt.
 - Text: RGB10,6,6
 - Bold Text: RGB125,40,25
