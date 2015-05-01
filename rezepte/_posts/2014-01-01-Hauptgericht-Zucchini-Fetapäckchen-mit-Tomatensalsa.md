@@ -30,4 +30,4 @@ Zubereitung
 
 Side Notes
 ----------
-- Dazu passen Fladenbrot oder Steinofensticks.
+- Dazu passen Fladenbrot oder Steinofensticks
