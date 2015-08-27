@@ -106,16 +106,14 @@ category: wiki
 
 - Mac App Store Apps
 - [Calibre](http://calibre-ebook.com/download)
-- [Dropbox](http://www.getdropbox.com)
+- [Dropbox](https://www.dropbox.com/)
   - Upload Rate nicht limitieren
-- [Firefox](http://www.mozilla.com/en-US/firefox/personal.html) + Adblock Plus
-- [GitHub](http://mac.github.com/)
+- [Firefox](https://www.mozilla.org/en-US/firefox/new/) + Adblock Plus
+- [GitHub](https://desktop.github.com/)
 - [Google Chrome](https://www.google.com/landing/chrome/beta/)
   - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/)
 - [s3cmd](http://s3tools.org)
-- [Handbrake](http://handbrake.fr/downloads.php)
 - [JDownloader](http://jdownloader.org/download/index)
-- [Max](http://sbooth.org/Max)
 - [MiddleClick](http://clement.beffa.org/labs/projects/middleclick/)
 - [NameChanger](http://www.mrrsoftware.com/MRRSoftware/NameChanger.html)
 - [Sublime Text](http://www.sublimetext.com/)
@@ -133,27 +131,6 @@ category: wiki
 - Background Color: RGB107,107,107
 - Paste Newlines as Carriage Returns: Off
 - Set locale environment variables on startup: Off
-
-### Max
-
-Apple MPEG-4 Audio (AAC)
-
-- Extension: m4a
-- Quality: Maximum
-- Bitrate: 320
-- VBR: No
-
-Apple MPEG-4 Audio (Apple Lossless)
-
-- MP3
-- Quality: Best
-
-### Handbrake
-
-- Video Quality: 17
-- Languages
-  - DE, EN AC3 Passthrough
-  - DE, EN AAC Stereo Auto 192
 
 ### Server Connections
 Connect to some servers to get them into the recent server list
