@@ -105,6 +105,7 @@ category: wiki
 ### Obligatorische Software
 
 - Mac App Store Apps
+- [aws-cli](https://aws.amazon.com/cli/) mit den Parametern 'eu-west-1' und 'json'
 - [Calibre](http://calibre-ebook.com/download)
 - [Dropbox](https://www.dropbox.com/)
   - Upload Rate nicht limitieren
@@ -112,7 +113,6 @@ category: wiki
 - [GitHub](https://desktop.github.com/)
 - [Google Chrome](https://www.google.com/landing/chrome/beta/)
   - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/)
-- [s3cmd](http://s3tools.org)
 - [JDownloader](http://jdownloader.org/download/index)
 - [MiddleClick](http://clement.beffa.org/labs/projects/middleclick/)
 - [NameChanger](http://www.mrrsoftware.com/MRRSoftware/NameChanger.html)
