@@ -25,6 +25,7 @@ This page describes the setup of an S3 based file storage with corresponding man
 The first thing that needs to be done is the creation of an S3 bucket and login possibilities to access objects in said bucket.
 
 1. Create the server-side file hierarchy (specified above), by creating a new bucket and setting up the folders within. The "user.txt" file can be empty. Additionally, [enable CORS](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html#how-do-i-enable-cors), so the files inside the bucket can be accessed from your test-domaint (most likely "localhost") and from the "real" domain.
+
     <CORSConfiguration>
      <CORSRule>
        <AllowedOrigin>http://example.com</AllowedOrigin>
@@ -43,6 +44,7 @@ The first thing that needs to be done is the creation of an S3 bucket and login 
        <AllowedHeader>*</AllowedHeader>
      </CORSRule>
     </CORSConfiguration>
+    
 2. Create a Google OAuth 2.0 (OpenID Connect) "Application" (for details see [here](http://docs.aws.amazon.com/STS/latest/UsingSTS/web-identity-federation.html#web-identity-federation-manual) and [here](https://developers.google.com/identity/protocols/OpenIDConnect)).
 2.1 Visit the [Google Developers Console](https://console.developers.google.com/) and create a new project.
 2.2 By default, some APIs are already active for new projects. Go to "APIs & auth > APIs" to deactivate them.
@@ -56,6 +58,7 @@ The first thing that needs to be done is the creation of an S3 bucket and login 
 3.2 Below the Dropdown in which you can choose the identity provider, another field exists and its name changes depending on the selected identity provider. In this field, enter the Client ID from the Google console.
 3.3 In the "conditionals", you can enter optional parameter to filter which Google Users can assume this role. Currently, only one option can be chosen: "accounts.google.com:sub" [explained here](https://developers.google.com/identity/protocols/OpenIDConnect#obtainuserinfo) which is the unique ID of each Google account. To determine mine, I went to the [Goolge+ Homepage](https://plus.google.com/u/0/) and copied the link url that lead to my Profile.
 3.4 With this data, create the user role. It could look similar to this:
+
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -74,7 +77,9 @@ The first thing that needs to be done is the creation of an S3 bucket and login 
         }
       ]
     }
+    
 3.5 Create a new policy that will contain the actual access rights that the user will have once he has "assumed" the Web Identity via Google Login. To do this, go to the AWS IAM Console and create the policy:
+
     {
         "Version": "2012-10-17",
         "Statement": [
@@ -98,6 +103,7 @@ Now a user can login in with his google credentials and download files.
 Now that the s3 side of things has been set up, it is time to create the client HTML that will mostly consist of a big friendly "Login" button. 
 
 1. An example HTML, that let's you log in and out with google, could look like this:
+
     <html>
     <head>
       <meta name="google-signin-clientid"     content="12345978899-ffbofjh76467542lb2g9dda.apps.googleusercontent.com">
@@ -132,7 +138,9 @@ Now that the s3 side of things has been set up, it is time to create the client 
       <a id="signOut" href="#" onclick="signOut();">Sign out</a>
     </body>
     </html>
+    
 2. So the basic login via google works, we can even access the users email and profile picture - for a nice display in our website. Still missing however is the connection to Amazon S3. In order to utilize this, the HTML from above needs to be enhanced:
+
     <html>
     <head>
       <meta name="google-signin-clientid"     content="9346994t-3s929talb2g95pd23ttie.apps.googleusercontent.com">
@@ -201,6 +209,7 @@ Now that the s3 side of things has been set up, it is time to create the client 
 
 This is currently still being worked on ...
 An example lambda JSON could look like this:
+
     {
       "file_in": "Das Test Buch Neu.epub",
       "file_out": "Das Test Buch Neu.epub",
@@ -219,9 +228,11 @@ and then calling the npm installer to include the [async](https://github.com/cao
     cd lambda_function; npm install async
 and copying the calibre tarball contents to a folder named `calibre`. 
 Add an `index.js` file to the folder and you are done. To upload the lambda function as a package, you have to zip it:
+
     zip -r ../Lambda_Package.zip .
 
 An example index.js file could look like this:
+
     var exec  = require('child_process').exec;
     var aws   = require('aws-sdk');
     var fs    = require('fs');
@@ -271,7 +282,9 @@ An example index.js file could look like this:
                         var stream = s3.getObject({Key: 'books/' + file_in}).createReadStream();
                           stream.pipe(file).on('end', function() {
                             //Nothing
-                          }).on('error', function() {callback('Error', 'Could not read file from S3 to /tmp', filename); });
+                          }).on('error', function() {
+                            callback('Error', 'Could not read file from S3 to /tmp', filename); 
+                          });
                           console.log('Opened' + file_in + ' to ' + filename);
                           callback(null, filename); //Das ruft jetzt das CMD auf
                     },
@@ -283,7 +296,8 @@ An example index.js file could look like this:
                           command += ' -a "' + author + '"';
                           command += ' --author-sort="' + author_sort + '"';
                           command += ' --tags="' + genre + '"';
-                          command += ' -c "" -r "" -p "" -k "" -d "" -l "" --isbn "" -s "" --category ""';
+                          command += ' -c "" -r "" -p "" -k "" -d "" -l ""';
+                          command += ' --isbn "" -s "" --category ""';
                         }
                         console.log('Command' + command);
                         callback(null, tmp_filename, command);
