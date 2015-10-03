@@ -115,7 +115,6 @@ category: wiki
   - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/)
 - [JDownloader](http://jdownloader.org/download/index)
 - [MiddleClick](http://clement.beffa.org/labs/projects/middleclick/)
-- [NameChanger](http://www.mrrsoftware.com/MRRSoftware/NameChanger.html)
 - [Sublime Text](http://www.sublimetext.com/)
 - [µTorrent](http://www.utorrent.com)
 - [VLC](http://www.videolan.org/vlc)
