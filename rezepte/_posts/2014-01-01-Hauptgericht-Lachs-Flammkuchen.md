@@ -11,6 +11,7 @@ Zutaten
 
 - 230g Mehl
 - 2 Esslöffel Olivenöl
+- 120ml warmes Wasser
 - 300g Schmand
 - 100g geriebener Parmesan
 - 2 Esslöffel Orangensaft
