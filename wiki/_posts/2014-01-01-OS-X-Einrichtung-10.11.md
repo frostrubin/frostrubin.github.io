@@ -1,5 +1,5 @@
 ---
-title: OS X Einrichtung 10.10
+title: OS X Einrichtung 10.11
 
 layout: page
 category: wiki
@@ -16,9 +16,9 @@ category: wiki
 
 ### Installationsmedium
 
-1. [Installer](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=915041082&mt=12) aus dem App Store herunterladen
+1. Installer aus dem App Store herunterladen
 2. Einen 8GB USB Stick mit HFS+/GUID formatieren ("Untitled" als Name vergeben)
-3. `sudo /Applications/Install\ OS\ X\ Yosemite.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ OS\ X\ Yosemite.app --nointeraction`
+3. `sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction`
 
 ### Installation
 
@@ -49,16 +49,11 @@ category: wiki
 
 ### Backup einspielen
 
-    # Neues /pub anlegen
-    $ su administrator
-    $ sudo mkdir /pub
-    $ sudo chmod 755 /pub
-    $ sudo chown bernhard:staff /pub
-
     # Bash Dateien wiederherstellen
     # 1. ~/.bash_profile
     # 2. ~/.ppdirs.txt
     # 3. ~/.my_helpers.sh
+    # 4. ~/.cloud_book_manager.php
 
 ## User-Interface aufhübschen
  
