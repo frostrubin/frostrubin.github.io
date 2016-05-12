@@ -43,6 +43,7 @@ category: wiki
 - `Accessibility > Reduce Transparency` setzen
 - `Security & Privacy > Advanced` Apple Remote ausschalten
 - `Security & Privacy > FileVault` einschalten
+- `Dictation & Speech > Shortcut` Off wählen
 - Drucker anschließen und Treiber per Software Update installieren
  
 ## Homeverzeichnis einrichten
@@ -59,7 +60,7 @@ category: wiki
  
 ### Versteckte OS X Einstellungen machen
 
-## Dock 
+#### Dock 
 
     # Klick auf Programm versteckt alle anderen Programme
     defaults write com.apple.dock single-app -bool YES
@@ -79,7 +80,7 @@ category: wiki
     # Position des Docks kann nicht mehr verändert werden
     defaults write com.apple.Dock position-immutable -bool YES
 
-## Finder 
+#### Finder 
 
     # Vollständige Pfadangabe im Finder
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
@@ -90,7 +91,7 @@ category: wiki
     # Erweiterter "Speichern unter" Dialog als Standard
     defaults write -g NSNavPanelExpandedStateForSaveMode -bool YES
 
-# Werte setzen
+#### Werte setzen
 
     killall Dock
     killall Finder
@@ -101,7 +102,6 @@ category: wiki
 
 - Mac App Store Apps
 - [aws-cli](https://aws.amazon.com/cli/) mit den Parametern 'eu-west-1' und 'json'
-- [Calibre](http://calibre-ebook.com/download)
 - [Dropbox](https://www.dropbox.com/)
   - Upload Rate nicht limitieren
 - [Firefox](https://www.mozilla.org/en-US/firefox/new/) + Adblock Plus
