@@ -44,6 +44,7 @@ category: wiki
 - `Security & Privacy > Advanced` Apple Remote ausschalten
 - `Security & Privacy > FileVault` einschalten
 - `Dictation & Speech > Shortcut` Off wählen
+- `Keychain Access` > Anderes Passwort für Login Keychain vergeben
 - Drucker anschließen und Treiber per Software Update installieren
  
 ## Homeverzeichnis einrichten
