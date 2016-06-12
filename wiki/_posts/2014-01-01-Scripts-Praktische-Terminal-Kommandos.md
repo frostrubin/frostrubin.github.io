@@ -142,3 +142,7 @@ oder
 ### CSS Newlines einfügen
 
     cat touch_screen.css | sed "s/}/}\\`echo -e '\r'`/g" > 2.css
+    
+### File-Renaming mit ForkLift: Alles nach dem letzten Leerzeichen löschen
+
+    Regex: ([^ ]+$)
