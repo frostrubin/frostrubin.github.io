@@ -108,7 +108,7 @@ category: wiki
 - [Firefox](https://www.mozilla.org/en-US/firefox/new/) + Adblock Plus
 - [GitHub](https://desktop.github.com/)
 - [Google Chrome](https://www.google.com/landing/chrome/beta/)
-  - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/)
+  - Add Adblock [filters for Facebook](http://facebook.adblockplus.me/en/), [filters for cookie law](http://prebake.eu/)
 - [JDownloader](http://jdownloader.org/download/index)
 - [MiddleClick](http://clement.beffa.org/labs/projects/middleclick/)
 - [Sublime Text](http://www.sublimetext.com/)
