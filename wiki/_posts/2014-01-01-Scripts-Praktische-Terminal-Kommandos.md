@@ -146,3 +146,9 @@ oder
 ### File-Renaming mit ForkLift: Alles nach dem letzten Leerzeichen löschen
 
     Regex: ([^ ]+$)
+
+### Firefox Bookmarks sichern
+
+    ffbookmark=`ls ~/Library/Application\ Support/Firefox/Profiles/*/bookmarkbackups|tail -n 1`
+    cp ~/Library/Application\ Support/Firefox/Profiles/*/bookmarkbackups/"$ffbookmark" ~/Desktop/ff.jsonlz4
+
