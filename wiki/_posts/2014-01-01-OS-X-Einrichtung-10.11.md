@@ -7,10 +7,16 @@ category: wiki
 
 ## Datensicherung
 
-1. `my sync` ist ausgeführt
-2. Firefox Passwörter exportieren
+1. Firefox Passwörter exportieren
+2. Firefox & Chrome Lesezeichen exportieren
 3. Dateien aus `~` sichern
 4. WLAN Passwort aufschreiben
+
+## Deauthorize your existing Mac from all Apple services
+1. iTunes: Go to the Account menu then Authorizations > De-authorize This Computer and confirm
+2. Apple menu > System Preferences > iCloud > Uncheck all the cloud options
+3. Messages > Messages menu > Preferences > Accounts > Sign out
+4. appleid.apple.com > Login > Devices > Click the Mac you’re working on > Remove Mac
 
 ## Systeminstallation
 
