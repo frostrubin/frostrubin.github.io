@@ -11,7 +11,13 @@ category: wiki
 
 ### Change Endpoint
 Extract the ZIP, replace all occurences of 
+
 	sdb.amazonaws.com
+
 with
+
 	sdb.eu-west-1.amazonaws.com
 
+### Example Select Query
+
+	select * from books where author like '%ahl%'
