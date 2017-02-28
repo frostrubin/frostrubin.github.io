@@ -59,9 +59,6 @@ category: wiki
 
     # Bash Dateien wiederherstellen
     # 1. ~/.bash_profile
-    # 2. ~/.ppdirs.txt
-    # 3. ~/.my_helpers.sh
-    # 4. ~/.cloud_book_manager.php
 
 ## User-Interface aufhübschen
  
@@ -104,6 +101,8 @@ category: wiki
     killall Finder
 
 ## Software-Installation
+
+Achtung! NUR noch Apps installieren, die kein Admin Passwort verlangen. 
 
 ### Obligatorische Software
 
