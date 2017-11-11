@@ -1,5 +1,5 @@
 ---
-title: Spaghetti mit roten Linsen
+title: Hauptgericht Spaghetti mit roten Linsen
 
 layout: page
 category: rezepte
