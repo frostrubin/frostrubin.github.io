@@ -46,6 +46,7 @@ category: wiki
 ### General
 - [Chrome OS Recovery](https://support.google.com/chromebook/answer/1080595)
 - [All Chrome Extensions made by Google](https://chrome.google.com/webstore/category/collection/by_google)
+- [All Android Apps made by Google](https://play.google.com/store/apps/dev?id=5700313618786177705&hl=en)
 
 ### Extension Development
 - [List of APIs](https://developer.chrome.com/extensions/api_index)
