@@ -39,6 +39,7 @@ category: wiki
 
 ## Install Android Apps
 - [RAR](https://play.google.com/store/apps/details?id=com.rarlab.rar&hl=en)
+- [File Manager+](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager&hl=en)
 
 
 
