@@ -17,6 +17,7 @@ Zutaten
 - 1 Knoblauchzehe
 - 150g Mini-Tomaten
 - 60g Oliven
+- 1 Päckchen Pinienkerne
 - 7 Esslöffel Olivenöl
 - 5 Esslöffel Essig
 - Salz & Pfeffer
@@ -28,4 +29,4 @@ Zubereitung
 1. Fusilli kochen, kalt abschrecken und abtropfen lassen. Paprika putzen und in mundgerechte Stücke schneiden. Knoblauch schälen und klein hacken.
 2. In einer Pfanne Schinkenwürfel in 2 Esslöffel Olivenöl anschwitzen. Paprikastücke und gehackten Knoblauch dazugeben, umrühren und 1–2 Minuten braten. In eine Schüssel umfüllen und mit den Fusilli mischen.
 3. Tomaten waschen und vierteln. Rote Zwiebel schälen und in Würfel schneiden. Zusammen mit den Oliven in den Salat geben. Mit Salz, Pfeffer, Essig und Öl abschmecken.
-4. Basilikum klein zupfen und unter den Salat mischen. Parmesan auf dem Salat verteilen.
+4. Basilikum klein zupfen und unter den Salat mischen. Parmesan und Pinienkerne auf dem Salat verteilen.
