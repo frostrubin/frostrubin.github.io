@@ -56,4 +56,8 @@ category: wiki
 - [Extra Keyboards for Chrome OS](https://github.com/google/extra-keyboards-for-chrome-os)
 - [Hangul IME Extension with Candidate Window](https://github.com/googlei18n/google-input-tools/blob/fc9f11d80d957560f7accf85a5fc27dd23625f70/chrome/os/nacl-hangul/js/ime.js)
 
+### Linux Containers
+- [Containers & VMs in Chrome OS](https://chromium.googlesource.com/chromiumos/docs/+/master/containers_and_vms.md)
+- [So you bought a Pixelbook](https://blog.drewolson.org/so-you-bought-a-pixelbook/)
+
 
