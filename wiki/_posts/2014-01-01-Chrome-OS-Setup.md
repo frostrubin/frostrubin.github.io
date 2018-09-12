@@ -60,4 +60,29 @@ category: wiki
 - [Containers & VMs in Chrome OS](https://chromium.googlesource.com/chromiumos/docs/+/master/containers_and_vms.md)
 - [So you bought a Pixelbook](https://blog.drewolson.org/so-you-bought-a-pixelbook/)
 
+#### Script to rename Files
+    #!/usr/bin/env bash
 
+    # Rename files to the name of their parent folder,
+    # followed by a counter.
+
+    set -e
+
+    mkdir -p ./output
+
+    counter=0
+    oldparent=""
+
+    find . -type f -not -path "./output/*" | while read line; do
+        echo "Processing file '$line'"
+        parent=$(dirname "$line")
+        parent=${parent##*/}
+        if [ "$oldparent" == "$parent" ]; then
+            let counter++
+        else
+            oldparent="$parent"
+            counter=1
+        fi
+        extension="${line##*.}"
+        cp "$line" "./output/$parent $counter.$extension"
+    done
