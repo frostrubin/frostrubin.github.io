@@ -86,3 +86,8 @@ category: wiki
         extension="${line##*.}"
         cp "$line" "./output/$parent $counter.$extension"
     done
+
+### Create Bootable Media
+1. Download Googles Official [Chromebook Recovery Utility](https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai)
+2. Rename your .ISO file to .BIN
+3. Use the Cog Menu in the App to create a bootable USB Stick
