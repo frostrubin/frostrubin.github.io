@@ -26,7 +26,6 @@ category: wiki
 - Switch betwenn last two Keyboard Layouts: CTRL+SPACE
 
 ## Install Extensions & Chrome Apps
-- [AWS Console Simplifier](https://github.com/frostrubin/Chrome-Extensions)
 - [Umlaut Helper](https://github.com/frostrubin/Chrome-Extensions)
 - [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb)
 - [Extension Developer Tools](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc)
@@ -35,13 +34,16 @@ category: wiki
 - [JSTorrent](https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb)
 - [Secure Shell](https://chrome.google.com/webstore/detail/secure-shell/pnhechapfaindjhompbnflcldabbghjo)
 - [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
-- [Zed](https://chrome.google.com/webstore/detail/zed-code-editor/pfmjnmeipppmcebplngmhfkleiinphhp)
 
 ## Install Android Apps
 - [RAR](https://play.google.com/store/apps/details?id=com.rarlab.rar&hl=en)
 - [File Manager+](https://play.google.com/store/apps/details?id=com.alphainventor.filemanager&hl=en)
 
-
+## Enable U2F Button
+- Open the Console (Ctrl + Alt + T), and enter
+```
+u2f_flags u2f
+```
 
 ## Interesting Links
 ### General
