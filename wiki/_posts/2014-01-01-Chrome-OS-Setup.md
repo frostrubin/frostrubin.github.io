@@ -62,7 +62,7 @@ u2f_flags u2f
 - [Containers & VMs in Chrome OS](https://chromium.googlesource.com/chromiumos/docs/+/master/containers_and_vms.md)
 - [So you bought a Pixelbook](https://blog.drewolson.org/so-you-bought-a-pixelbook/)
 
-#### Script to rename Files
+#### Script to rename Files by Parent Folder Name
     #!/usr/bin/env bash
 
     # Rename files to the name of their parent folder,
@@ -87,6 +87,19 @@ u2f_flags u2f
         fi
         extension="${line##*.}"
         cp "$line" "./output/$parent $counter.$extension"
+    done
+
+#### Script to rename Files (dash to dot)
+    #!/usr/bin/env bash
+
+    set -e
+    mkdir -p ./output
+
+    find . -type f -not -path "./output/*" -not -path '*/\.*' | while read line;
+    do
+        echo "$line"
+        newname="./output/${line##*/}"
+        cp "$line" "${newname//-/.}"
     done
 
 ### Create Bootable Media
