@@ -75,7 +75,7 @@ u2f_flags u2f
     counter=0
     oldparent=""
 
-    find . -type f -not -path "./output/*" | while read line; do
+    find . -type f -not -path "./output/*" | sort | while read line; do
         echo "Processing file '$line'"
         parent=$(dirname "$line")
         parent=${parent##*/}
