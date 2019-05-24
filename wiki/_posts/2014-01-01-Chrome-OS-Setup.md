@@ -9,7 +9,7 @@ category: wiki
 - Google Pixelbook
 - Power Adapter: 45W USB-C
 
-## Switch to Beta Channel
+## Switching to Beta Channel
 - Settings => About Chrome OS => Detailed Build Information => Change Channel
 
 ## Settings
@@ -44,6 +44,11 @@ category: wiki
 ```
 u2f_flags u2f
 ```
+## Enable GPU for Linux
+1. Enable here: chrome://flags/#crostini-gpu-support
+2. Restart
+3. sudo apt update; sudo apt dist-upgrade
+4. glxinfo -B
 
 ## Interesting Links
 ### General
