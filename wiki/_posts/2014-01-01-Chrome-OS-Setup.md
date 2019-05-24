@@ -49,6 +49,7 @@ u2f_flags u2f
 2. Restart
 3. sudo apt update; sudo apt dist-upgrade
 4. glxinfo -B
+5. sudo apt install cros-gpu-alpha ( Make sure you want this ! )
 
 ## Interesting Links
 ### General
