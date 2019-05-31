@@ -51,6 +51,12 @@ u2f_flags u2f
 4. glxinfo -B
 5. sudo apt install cros-gpu-alpha ( Make sure you want this ! )
 
+## Backup Linux Container
+1. Enable here: chrome://flags/#crostini-backup
+2. Restart
+3. lxc image list
+4. lxc publish penguin --alias backup reports
+
 ## Interesting Links
 ### General
 - [Chrome OS Recovery](https://support.google.com/chromebook/answer/1080595)
