@@ -42,8 +42,11 @@ category: wiki
 ## Enable U2F Button
 - Open the Console (Ctrl + Alt + T), and enter
 ```
-u2f_flags u2f
+u2f_flags u2f,user_keys
 ```
+
+See also: https://sites.google.com/a/chromium.org/dev/chromium-os/u2f-ecdsa-vulnerability
+
 ## Enable GPU for Linux
 1. Enable here: chrome://flags/#crostini-gpu-support
 2. Restart
