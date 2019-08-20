@@ -47,6 +47,9 @@ u2f_flags u2f,user_keys
 
 See also: https://sites.google.com/a/chromium.org/dev/chromium-os/u2f-ecdsa-vulnerability
 
+## Disable Media Playback Notifications
+chrome://flags/#enable-media-session-notifications 
+
 ## Enable GPU for Linux
 1. Enable here: chrome://flags/#crostini-gpu-support
 2. Restart
