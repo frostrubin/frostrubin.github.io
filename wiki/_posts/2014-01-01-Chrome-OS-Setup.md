@@ -63,6 +63,13 @@ chrome://flags/#enable-media-session-notifications
 3. lxc image list
 4. lxc publish penguin --alias backup reports
 
+## Install AWS in Linux Container
+```
+sudo apt install python3-pip
+sudo pip3 install awscli
+aws configure
+``` 
+
 ## Interesting Links
 ### General
 - [Chrome OS Recovery](https://support.google.com/chromebook/answer/1080595)
