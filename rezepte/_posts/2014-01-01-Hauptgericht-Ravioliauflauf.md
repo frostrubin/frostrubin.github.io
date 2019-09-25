@@ -12,7 +12,7 @@ Zutaten
 - 1 Zwiebel
 - 1 Koblauchzehe
 - 2 Esslöffel Öl
-- 1 Dose (850ml) Tomaten
+- 2 Dosen (850ml) Tomaten
 - 1 Teelöffel Gemüsebrühe
 - 2 Esslöffel Balsamico Essig
 - Salz, Pfeffer
