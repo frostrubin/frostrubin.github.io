@@ -50,6 +50,9 @@ See also: https://sites.google.com/a/chromium.org/dev/chromium-os/u2f-ecdsa-vuln
 ## Disable Media Playback Notifications
 chrome://flags/#enable-media-session-notifications 
 
+## Enable 3-finger Desktop Switching
+chrome://flags/#enable-virtual-desks-gestures
+
 ## Enable GPU for Linux
 1. Enable here: chrome://flags/#crostini-gpu-support
 2. Restart
