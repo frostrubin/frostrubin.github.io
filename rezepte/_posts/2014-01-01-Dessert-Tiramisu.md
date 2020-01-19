@@ -10,7 +10,6 @@ Zutaten
 *Für 6 Portionen*
 
 - 500g Mascarpone
-- 150ml Milch
 - 75g Zucker
 - 1 Päckchen Bourbon Vanille-Zucker
 - 40ml Amaretto (oder Orangensaft)
@@ -20,7 +19,7 @@ Zutaten
 
 Zubereitung
 -----------
-1. Mascarpone mit Milch, Zucker, Vanille-Zucker und der Hälfte des Amarettos in eine Rührschüssel geben.
+1. Mascarpone mit Zucker, Vanille-Zucker und der Hälfte des Amarettos in eine Rührschüssel geben.
 2. Die Zutaten mit einem Handrührgerät mit Rührbesen glattrühren.
 3. Den Übrigen Amaretto mit Espresso oder Kaffee verrühren.
 4. Die Hälfte der Löffelbiskuits mit der Zuckerseite nach unten in die Auflaufform legen.
