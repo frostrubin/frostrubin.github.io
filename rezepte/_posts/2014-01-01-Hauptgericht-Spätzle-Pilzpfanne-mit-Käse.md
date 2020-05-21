@@ -27,3 +27,7 @@ Zubereitung
 3. Zwiebeln, Tomaten und Petersilie untermischen, 1 Min. mitbraten. Salzen und pfeffern.
 4. Eier verquirlen, in die Pfanne gießen. Bei milder Hitze 1 Min. stocken lassen. 
 Mit Käse bestreuen, zugedeckt in 2 Min. schmelzen lassen.
+
+Side Notes
+----------
+- Statt der Tomaten kann man auch Paprika nehmen
