@@ -9,7 +9,7 @@ Zutaten
 -------
 *Für 2 Personen*
 
-- 100g Tofu
+- 300g bis 400g Tofu
 - 1 Paprikaschote
 - 1 Chilischote
 - 2 Esslöffel Tomatenmark
