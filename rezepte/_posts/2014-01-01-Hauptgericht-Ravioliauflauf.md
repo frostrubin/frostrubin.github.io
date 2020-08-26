@@ -9,7 +9,6 @@ Zutaten
 -------
 *Für 2 Portionen*
 
-- 1 Zwiebel
 - 1 Koblauchzehe
 - 2 Esslöffel Öl
 - 2 Dosen (850ml) Tomaten
@@ -23,10 +22,9 @@ Zutaten
 
 Zubereitung
 -----------
-1. Backofen vorheizen (E-Herd 230, Umluft 210). Zwiebel und Knoblauch schälen, fein würfeln. 
-Öl in einem Topf erhitzen. Zwiebel und Knoblauch darin glasig dünsten. 
-Tomaten samt Saft zufügen. Tomaten mit einem Pfannenwender zerdrücken. 
-Aufkochen und Brühe einrühren. Mit Essig, Salz und Pfeffer würzen, ca. 5 Minuten köcheln.
-2. Inzwischen Mozzarella in dünne Scheiben schneiden. Eine Auflaufform fetten. 
+1. Backofen vorheizen (E-Herd 230, Umluft 210). 
+2. Tomaten mit trockener Gemüsebrühe, zerdrücktem Knoblauch und Essig mischen.
+Mit Salz und Pfeffer würzen.
+2. Inzwischen Mozzarella in dünne Scheiben schneiden.
 Soße, Ravioli und 2/3 Gratinkäse abwechselnd in die Form schichten und mit Soße abschließen.
 Mozzarella und Rest Gratinkäse darauf verteilen. Im heißen Backofen ca. 15 bis 20 Minuten goldbraun backen.
