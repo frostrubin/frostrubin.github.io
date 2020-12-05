@@ -21,7 +21,7 @@ Zutaten
 
 Zubereitung
 -----------
-1. Nudeln in kochendem SAlzasser nach Packungsanweisung garen. 
+1. Nudeln in kochendem Salzwasser nach Packungsanweisung garen. 
 Brokkoli waschen und in Röschen vom Strunk schneiden. Ca. 5 Minuten vor Ende der Garzeit zu den Nudeln geben.
 2. Tomaten waschen und halbieren.
 3. Inzwischen für die Soße Butter in einem Topf erhitzen, mit Mehl bestäuben. Hell anschwitzen, Brühe und Milch einrühren.
