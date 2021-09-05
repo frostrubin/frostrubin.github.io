@@ -1,5 +1,5 @@
 ---
-title: Hauptgericht Auberginenschnitzel mit Paprika
+title: Hauptgericht Auberginenschnitzel
 
 layout: page
 category: rezepte
