@@ -11,8 +11,7 @@ Zutaten
 
 - 300ml Ananassaft
 - 100ml Kokosmilch
-- 50ml Schlagsahne
-- 2EL Zucker
+- 50ml Milch
 - Eiswürfel
 
 Zubereitung
