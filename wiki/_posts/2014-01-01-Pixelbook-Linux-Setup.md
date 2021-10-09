@@ -14,6 +14,7 @@ I have not yet tested any of this, so far it is just a collection.
 - [chrx.org](https://chrx.org)
 - [mrchromebox.tech](https://mrchromebox.tech)
 - [Fuchsia > Hardware > Pixelbook](https://fuchsia.dev/fuchsia-src/development/hardware/pixelbook)
+- [Chromium OS > Developer Information for Devices > CTRL + F "Pixelbook"](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
 
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
@@ -60,13 +61,21 @@ From the warning screen, the following keyboard shortcuts are available:
 - Start the Chromebook
 - You should see a screen that says "OS verification is OFF" and approximately 30 seconds later (or use CTRL + D to speed up) the boot will continue. 
 - Wait for the Welcome or Login screen to load. Ignore any link for "Enable debugging features".
-- Press Ctrl + Alt + Refresh/F3 to enter a command shell. If pressing this key combination has no effect, try rebooting the Pixelbook once more.
-- These are classical Linux Virtual Terminals, VT1 to VT11
+- Get to a command prompt. Details:
+- One way to get the login prompt is through something called VT-2, or “virtual terminal 2”. You can get to VT-2 by pressing:
+CTRL + ALT + XXX where the XXX key is the key in the F2 position which may be the refresh key or another key.
+Once you have the login prompt, you should see a set of instructions telling you about command-line access. By default, you can login as the chronos user with no password. This includes the ability to do password-less sudo. The instructions on the screen will tell you how you can set a password. They also tell you how to disable screen dimming.
+In order to get back to the browser press:
+CTRL + ALT + YYY where the YYY key is the left-arrow key just above the number 1 on your keyboard.
+NOTE: The top-rows of the keyboard on a Chrome OS device are actually treated by Linux as the keys F1 through F10. Thus, the refresh key is actually F2 and the back key is actually F1.
+NOTE: Kernel messages show up on VT-8.
+
+- Press Ctrl + Alt + Refresh to enter a command shell. If pressing this key combination has no effect, try rebooting the Pixelbook once more.
 - Enter 'chronos' as the user with a blank password
+- Follow the on-screen instructions to set a password! Since your device will be permanently in developer mode, this is important!
 - Enable USB booting by running sudo crossystem dev_boot_usb=1
 - Enable Legacy Boot mode by running sudo crossystem dev_boot_legacy=1
 - (Optional) Default to USB booting by running sudo crossystem dev_default_boot=usb (Not recommended because booting default from usb is insecure)
-
 - Plug the USB drive with the Linux Installer into the Pixelbook. Avoid using a USB hub.
 - Reboot by typing sudo reboot
 - On the "OS verification is OFF" screen press Ctrl+U to bypass the timeout and boot from USB immediately.
@@ -78,6 +87,8 @@ If the device tries to boot from USB, either because that is the default or you 
 
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
+[Reddit > Pixelbook > Windows Firmware Status Tracker](https://www.reddit.com/r/PixelBook/comments/aqpns2/windows_10_pixelbook_uefi_firmware_status_tracker/)
+[mrchromebox.tech > fwscript](https://mrchromebox.tech/#fwscript)
 
 Yes, this OS exists too and is - alledgedly - relatively well supported on the Pixelbook
 The WiFi Drivers [can be found here](https://www.intel.com/content/www/us/en/download/19351/windows-10-wi-fi-drivers-for-intel-wireless-adapters.html?product=99445)
