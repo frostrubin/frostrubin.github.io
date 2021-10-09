@@ -113,8 +113,11 @@ This step requires a short disabling of the Firmware write protection, changing 
 This will list all of the available flags. The ones of interest to us are:
 
   GBB_FLAG_DEV_SCREEN_SHORT_DELAY 0x00000001
+  
   GBB_FLAG_FORCE_DEV_SWITCH_ON 0x00000008
+  
   GBB_FLAG_FORCE_DEV_BOOT_LEGACY 0x00000080
+  
   GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
 
 - So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: /usr/share/vboot/bin/set_gbb_flags.sh 0x489
