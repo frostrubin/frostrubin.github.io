@@ -13,6 +13,7 @@ I have not yet tested any of this, so far it is just a collection.
 - [Chromium OS - Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
 - [chrx.org](https://chrx.org)
 - [mrchromebox.tech](https://mrchromebox.tech)
+- [ArchLinux Wiki > Chrome OS Devices](https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction)
 - [Fuchsia > Hardware > Pixelbook](https://fuchsia.dev/fuchsia-src/development/hardware/pixelbook)
 - [Chromium OS > Developer Information for Devices > CTRL + F "Pixelbook"](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
 
@@ -65,25 +66,49 @@ From the warning screen, the following keyboard shortcuts are available:
 - One way to get the login prompt is through something called VT-2, or “virtual terminal 2”. You can get to VT-2 by pressing:
 CTRL + ALT + XXX where the XXX key is the key in the F2 position which may be the refresh key or another key.
 Once you have the login prompt, you should see a set of instructions telling you about command-line access. By default, you can login as the chronos user with no password. This includes the ability to do password-less sudo. The instructions on the screen will tell you how you can set a password. They also tell you how to disable screen dimming.
-In order to get back to the browser press:
+
+- In order to get back to the browser press:
 CTRL + ALT + YYY where the YYY key is the left-arrow key just above the number 1 on your keyboard.
 NOTE: The top-rows of the keyboard on a Chrome OS device are actually treated by Linux as the keys F1 through F10. Thus, the refresh key is actually F2 and the back key is actually F1.
 NOTE: Kernel messages show up on VT-8.
-
 - Press Ctrl + Alt + Refresh to enter a command shell. If pressing this key combination has no effect, try rebooting the Pixelbook once more.
 - Enter 'chronos' as the user with a blank password
 - Follow the on-screen instructions to set a password! Since your device will be permanently in developer mode, this is important!
 - Enable USB booting by running sudo crossystem dev_boot_usb=1
 - Enable Legacy Boot mode by running sudo crossystem dev_boot_legacy=1
 - (Optional) Default to USB booting by running sudo crossystem dev_default_boot=usb (Not recommended because booting default from usb is insecure)
+
+If you ever want to become root, use sudo su -
+
+## Partitioning
+
+
+
+
+## Install Linux
 - Plug the USB drive with the Linux Installer into the Pixelbook. Avoid using a USB hub.
 - Reboot by typing sudo reboot
 - On the "OS verification is OFF" screen press Ctrl+U to bypass the timeout and boot from USB immediately.
-If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
+- If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
+- XXX ???
 
+## Change GBB Options to prevent accidental Developer Mode Deactivation
+This step requires a short disabling of the Firmware write protection, changing GBB Flags, then re-enabling the write protection
 
+[ArchLinux Wiki > Chrome OS Devices > Boot to SeaBios by Default](https://wiki.archlinux.org/title/Chrome_OS_devices#Boot_to_SeaBIOS_by_default)
 
+- Enter a superuser shell by booting in developer mode, CTRL + D, accessing VT2 and logging in as chronos
+- Disable Firmware write protection via flashrom --wp-disable
+- Check that write protection is disabled flashrom --wp-status
+- Run set_gbb_flags.sh with no parameters /usr/share/vboot/bin/set_gbb_flags.sh
+This will list all of the available flags. The ones of interest to us are:
+GBB_FLAG_DEV_SCREEN_SHORT_DELAY 0x00000001
+GBB_FLAG_FORCE_DEV_SWITCH_ON 0x00000008
+GBB_FLAG_FORCE_DEV_BOOT_LEGACY 0x00000080
+GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
 
+- So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: /usr/share/vboot/bin/set_gbb_flags.sh 0x489
+- Enable back the software write protection flashrom --wp-enable
 
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
