@@ -94,7 +94,12 @@ If you ever want to become root, use sudo su -
 - If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
 - XXX ???
 
-
+## Disable USB Boot
+This does not completely prevent USB boot, since the Legacy Boot Mode (SeaBios) reachable via CTRL + L allows for USB booting too.
+- Boot via CTRL + D
+- Enter VT2
+- sudo crossystem dev_boot_usb=0
+- sudo reboot 
 
 ## Change GBB Options to prevent accidental Developer Mode Deactivation
 This step requires a short disabling of the Firmware write protection, changing GBB Flags, then re-enabling the write protection
