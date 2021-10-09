@@ -124,6 +124,11 @@ GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
 - Press CTRL + D or wait 30 seconds -> Boots Chrome OS
 - Press CTRL + L -> Opens SeaBios, which boots Linux
 
+## Linux Specific Fixes
+### Fix Suspend
+https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
+
+
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
 [Reddit > Pixelbook > Windows Firmware Status Tracker](https://www.reddit.com/r/PixelBook/comments/aqpns2/windows_10_pixelbook_uefi_firmware_status_tracker/)
