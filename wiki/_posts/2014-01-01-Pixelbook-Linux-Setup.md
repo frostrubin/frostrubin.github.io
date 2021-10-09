@@ -17,6 +17,8 @@ I have not yet tested any of this, so far it is just a collection.
 - [Fuchsia > Hardware > Pixelbook](https://fuchsia.dev/fuchsia-src/development/hardware/pixelbook)
 - [Chromium OS > Developer Information for Devices > CTRL + F "Pixelbook"](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
 
+- [Github > MrChromebox > Scripts (normally run in developer mode to do everything automatically](https://github.com/MrChromebox/scripts)
+
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
 Without flashing the firmware, explicitly NOT having to remove/disable the firmware write-protect.
@@ -92,6 +94,8 @@ If you ever want to become root, use sudo su -
 - If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
 - XXX ???
 
+
+
 ## Change GBB Options to prevent accidental Developer Mode Deactivation
 This step requires a short disabling of the Firmware write protection, changing GBB Flags, then re-enabling the write protection
 
@@ -109,6 +113,11 @@ GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
 
 - So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: /usr/share/vboot/bin/set_gbb_flags.sh 0x489
 - Enable back the software write protection flashrom --wp-enable
+
+## Final Result
+- Boot Pixelbook
+- Press CTRL + D or wait 30 seconds -> Boots Chrome OS
+- Press CTRL + L -> Opens SeaBios, which boots Linux
 
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
