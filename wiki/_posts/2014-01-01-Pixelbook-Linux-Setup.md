@@ -132,6 +132,12 @@ This will list all of the available flags. The ones of interest to us are:
 ### Fix Suspend
 https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
 
+## Linux Ideas
+- openbox
+- tint2 dock
+- obconf
+- obmenu
+- lxappearance
 
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
