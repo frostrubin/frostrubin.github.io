@@ -138,6 +138,7 @@ https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
 - obconf
 - obmenu
 - lxappearance
+- lxappearance-obconf
 
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
