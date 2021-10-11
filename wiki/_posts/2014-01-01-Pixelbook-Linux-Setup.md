@@ -140,6 +140,8 @@ https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
 - lxappearance
 - lxappearance-obconf
 
+- https://www.youtube.com/watch?v=eRKtkmQ4yGI
+
 ## Windows
 [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
 [Reddit > Pixelbook > Windows Firmware Status Tracker](https://www.reddit.com/r/PixelBook/comments/aqpns2/windows_10_pixelbook_uefi_firmware_status_tracker/)
