@@ -17,7 +17,8 @@ I have not yet tested any of this, so far it is just a collection.
 - [Fuchsia > Hardware > Pixelbook](https://fuchsia.dev/fuchsia-src/development/hardware/pixelbook)
 - [Chromium OS > Developer Information for Devices > CTRL + F "Pixelbook"](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
 
-- [Github > MrChromebox > Scripts (normally run in developer mode to do everything automatically](https://github.com/MrChromebox/scripts)
+- [GitHub > MrChromebox > Scripts (normally run in developer mode to do everything automatically](https://github.com/MrChromebox/scripts)
+- [GitHub > chrx > install-chroot.sh](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot)
 
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
@@ -129,8 +130,24 @@ This will list all of the available flags. The ones of interest to us are:
 - Press CTRL + L -> Opens SeaBios, which boots Linux
 
 ## Linux Specific Fixes
-### Fix Suspend
-https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
+### Fix Suspend & More
+- https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
+
+
+## Linux Software
+- sudo apt update
+- sudo apt install ssh rsync vim
+- sudo dpkg-reconfigure tzdata
+- sudo apt install xbindkeys xdotool xbacklight xvkbd
+
+## Install Chrome
+```
+curl -O https://dl-ssl.google.com/linux/linux_signing_key.pub
+sudo apt-key add linux_signing_key.pub
+sudo add-apt-repository -y "deb https://dl.google.com/linux/chrome/deb/ stable main"
+sudo apt update
+sudo apt install google-chrome-stable
+```
 
 ## Linux Ideas
 - openbox
