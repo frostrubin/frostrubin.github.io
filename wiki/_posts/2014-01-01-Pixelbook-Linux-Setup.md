@@ -16,7 +16,6 @@ I have not yet tested any of this, so far it is just a collection.
 - [ArchLinux Wiki > Chrome OS Devices](https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction)
 - [Fuchsia > Hardware > Pixelbook](https://fuchsia.dev/fuchsia-src/development/hardware/pixelbook)
 - [Chromium OS > Developer Information for Devices > CTRL + F "Pixelbook"](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
-
 - [GitHub > MrChromebox > Scripts (normally run in developer mode to do everything automatically](https://github.com/MrChromebox/scripts)
 - [GitHub > chrx > install-chroot.sh](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot)
 
@@ -84,7 +83,22 @@ NOTE: Kernel messages show up on VT-8.
 If you ever want to become root, use sudo su -
 
 ## Partitioning
-
+[Chromium OS > Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
+Chromium OS comes with 12 partitions pre-installed. Removing ANY of these partitions breaks chrome OS.
+The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a working Linux system. To do this, one has to understand the partitioning scheme.
+| Partition | Usage                               | Purpose                                                                 |
+| 1	        | user state, aka "stateful partition | User's browsing history, downloads, cache, etc. Encrypted per-user.     |
+| 2	        | kernel A                            | Initially installed kernel.                                             |
+| 3	        | rootfs A                            | Initially installed rootfs.                                             |
+| 4	        | kernel B                            | Alternate kernel, for use by automatic upgrades.                        |
+| 5	        | rootfs B                            | Alternate rootfs, for use by automatic upgrades.                        |
+| 6	        | kernel C                            | Minimal-size partition for future third kernel.                         |
+| 7	        | rootfs C                            | Minimal-size partition for future third rootfs.                         |
+| 8	        | OEM customization                   | Web pages, links, themes, etc. from OEM.                                |
+| 9	        | MiniOS A	                          | Recovery partition A                                                    |
+| 10	      | MiniOS B	                          | Recovery partition B, for upgrades. Must reside at the end of the disk. |
+| 11	      | Hibernate	                          | Small partition reserved for hibernation state.                         |
+| 12	      | EFI System Partition                | Contains 64-bit grub2 bootloader for EFI BIOSes, and second-stage syslinux bootloader for legacy BIOSes. |
 
 
 
