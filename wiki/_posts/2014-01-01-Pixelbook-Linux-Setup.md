@@ -86,7 +86,9 @@ If you ever want to become root, use sudo su -
 [Chromium OS > Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
 Chromium OS comes with 12 partitions pre-installed. Removing ANY of these partitions breaks chrome OS.
 The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a working Linux system. To do this, one has to understand the partitioning scheme.
+
 | Partition | Usage                               | Purpose                                                                 |
+| --------- | ----------------------------------- | ----------------------------------------------------------------------- |
 | 1	        | user state, aka "stateful partition | User's browsing history, downloads, cache, etc. Encrypted per-user.     |
 | 2	        | kernel A                            | Initially installed kernel.                                             |
 | 3	        | rootfs A                            | Initially installed rootfs.                                             |
