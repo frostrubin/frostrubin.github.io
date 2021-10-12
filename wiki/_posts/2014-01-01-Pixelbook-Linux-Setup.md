@@ -20,12 +20,15 @@ I have not yet tested any of this, so far it is just a collection.
 - [GitHub > chrx > install-chroot.sh](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot)
 - [Medium > Adrian Carroll > How to dual boot ChromeOS and Linux](https://medium.com/@adrian.carroll7/how-to-dual-boot-chromeos-and-linux-a-step-by-step-guide-68ed5b073e1b)
 - [Fascinating Captain > How do I dual boot Chrome OS and Linux using a USB drive](http://www.fascinatingcaptain.com/projects/dual-boot-chrome-os-and-linux/)
+- [Saagar Jha > Dual Booting Chrome OS and elementary OS](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/)
 
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
 Without flashing the firmware, explicitly NOT having to remove/disable the firmware write-protect.
-Doing steps manually. Using [Legacy Boot Mode](https://mrchromebox.tech/#bootmodes).
-All data on the Pixelbook is wiped in the process.
+Without curl'ing unknown scripts into a root shell.
+Using [Legacy Boot Mode](https://mrchromebox.tech/#bootmodes).
+
+**All data on the Pixelbook is wiped in the process.**
 
 ## Needed Hardware
 - Google Pixelbook
@@ -33,7 +36,7 @@ All data on the Pixelbook is wiped in the process.
 - USB Stick for Chrome OS Recovery Image (8GB)
 
 ## Preparations
-You MUST prepare a USB Stick with a Chrome OS Recovery Image. If anything goes wrong during the installation/setup procedure, the device might end up 
+You **MUST** prepare a USB Stick with a Chrome OS Recovery Image. If anything goes wrong during the installation/setup procedure, the device might end up 
 without an OS to run. You don't want that.
 
 - Install the [Chromebook Recovery Utility](https://chrome.google.com/webstore/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm)
