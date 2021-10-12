@@ -46,8 +46,8 @@ and create a bootable Recovery USB Stick.
 Further Safety Net: [Google Support > Chromebook wiederherstellen](https://support.google.com/chromebook/answer/1080595)
 
 ## Developer Mode
-[Chromium OS - Developer Mode](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_mode.md)
-[Chromium OS - Firmware Keyboard Interface](https://chromium.googlesource.com/chromiumos/docs/+/master/debug_buttons.md#Firmware-Keyboard-Interface)
+- [Chromium OS - Developer Mode](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_mode.md)
+- [Chromium OS - Firmware Keyboard Interface](https://chromium.googlesource.com/chromiumos/docs/+/master/debug_buttons.md#Firmware-Keyboard-Interface)
 
 Note that Developer Mode disables security features and may leave your device open to attack. Only enable if you understand the risks.
 
@@ -88,7 +88,8 @@ NOTE: Kernel messages show up on VT-8.
 If you ever want to become root, use sudo su -
 
 ## Partitioning
-[Chromium OS > Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
+- [Chromium OS > Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
+
 Chromium OS comes with 12 partitions pre-installed. Removing ANY of these partitions breaks chrome OS.
 The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a working Linux system. To do this, one has to understand the partitioning scheme.
 
@@ -116,7 +117,7 @@ This is made possible because the _physical_ layout on the Disk is actuall diffe
 ![Chrome OS physical partitioning](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_partition_layout.png?raw=true)
 
 To achieve this, we look at the routines of the chrx setup.
-[GitHub > chrx > setup-storage.sh](https://github.com/reynhout/chrx/blob/master/chrx-setup-storage)
+- [GitHub > chrx > setup-storage.sh](https://github.com/reynhout/chrx/blob/master/chrx-setup-storage)
 
 
 
@@ -138,7 +139,7 @@ This does not completely prevent USB boot, since the Legacy Boot Mode (SeaBios) 
 ## Change GBB Options to prevent accidental Developer Mode Deactivation
 This step requires a short disabling of the Firmware write protection, changing GBB Flags, then re-enabling the write protection
 
-[ArchLinux Wiki > Chrome OS Devices > Boot to SeaBios by Default](https://wiki.archlinux.org/title/Chrome_OS_devices#Boot_to_SeaBIOS_by_default)
+- [ArchLinux Wiki > Chrome OS Devices > Boot to SeaBios by Default](https://wiki.archlinux.org/title/Chrome_OS_devices#Boot_to_SeaBIOS_by_default)
 
 - Enter a superuser shell by booting in developer mode, CTRL + D, accessing VT2 and logging in as chronos
 - Disable Firmware write protection via flashrom --wp-disable
@@ -146,13 +147,12 @@ This step requires a short disabling of the Firmware write protection, changing 
 - Run set_gbb_flags.sh with no parameters /usr/share/vboot/bin/set_gbb_flags.sh
 This will list all of the available flags. The ones of interest to us are:
 
-  GBB_FLAG_DEV_SCREEN_SHORT_DELAY 0x00000001
-  
-  GBB_FLAG_FORCE_DEV_SWITCH_ON 0x00000008
-  
-  GBB_FLAG_FORCE_DEV_BOOT_LEGACY 0x00000080
-  
-  GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
+```
+GBB_FLAG_DEV_SCREEN_SHORT_DELAY 0x00000001  
+GBB_FLAG_FORCE_DEV_SWITCH_ON 0x00000008
+GBB_FLAG_FORCE_DEV_BOOT_LEGACY 0x00000080
+GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
+```
 
 - So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: /usr/share/vboot/bin/set_gbb_flags.sh 0x489
 - Enable back the software write protection flashrom --wp-enable
@@ -163,9 +163,7 @@ This will list all of the available flags. The ones of interest to us are:
 - Press CTRL + L -> Opens SeaBios, which boots Linux
 
 ## Linux Specific Fixes
-### Fix Suspend & More
-- https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
-
+- Fix Suspend & More: https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
 
 ## Linux Software
 - sudo apt update
@@ -193,9 +191,9 @@ sudo apt install google-chrome-stable
 - https://www.youtube.com/watch?v=eRKtkmQ4yGI
 
 ## Windows
-[Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
-[Reddit > Pixelbook > Windows Firmware Status Tracker](https://www.reddit.com/r/PixelBook/comments/aqpns2/windows_10_pixelbook_uefi_firmware_status_tracker/)
-[mrchromebox.tech > fwscript](https://mrchromebox.tech/#fwscript)
+- [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
+- [Reddit > Pixelbook > Windows Firmware Status Tracker](https://www.reddit.com/r/PixelBook/comments/aqpns2/windows_10_pixelbook_uefi_firmware_status_tracker/)
+- [mrchromebox.tech > fwscript](https://mrchromebox.tech/#fwscript)
 
 Yes, this OS exists too and is - alledgedly - relatively well supported on the Pixelbook
 The WiFi Drivers [can be found here](https://www.intel.com/content/www/us/en/download/19351/windows-10-wi-fi-drivers-for-intel-wireless-adapters.html?product=99445)
