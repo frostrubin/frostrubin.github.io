@@ -18,6 +18,8 @@ I have not yet tested any of this, so far it is just a collection.
 - [Chromium OS > Developer Information for Devices > CTRL + F "Pixelbook"](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
 - [GitHub > MrChromebox > Scripts (normally run in developer mode to do everything automatically](https://github.com/MrChromebox/scripts)
 - [GitHub > chrx > install-chroot.sh](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot)
+- [Medium > Adrian Carroll > How to dual boot ChromeOS and Linux](https://medium.com/@adrian.carroll7/how-to-dual-boot-chromeos-and-linux-a-step-by-step-guide-68ed5b073e1b)
+- [Fascinating Captain > How do I dual boot Chrome OS and Linux using a USB drive](http://www.fascinatingcaptain.com/projects/dual-boot-chrome-os-and-linux/)
 
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
@@ -84,7 +86,6 @@ If you ever want to become root, use sudo su -
 
 ## Partitioning
 [Chromium OS > Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
-[Chromium OS > Partition Resizing](https://www.chromium.org/chromium-os/chromiumos-design-docs/partition-resizing)
 Chromium OS comes with 12 partitions pre-installed. Removing ANY of these partitions breaks chrome OS.
 The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a working Linux system. To do this, one has to understand the partitioning scheme.
 
@@ -110,6 +111,10 @@ Bootable USB keys have the same layout, except that kernel B and rootfs B are mi
 We want to use partition 6 or 7 to store our Linux installation. 
 This is made possible because the _physical_ layout on the Disk is actuall different from the GPT partitioning table:
 ![Chrome OS physical partitioning](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_partition_layout.png?raw=true)
+
+To achieve this, we look at the routines of the chrx setup.
+[GitHub > chrx > setup-storage.sh](https://github.com/reynhout/chrx/blob/master/chrx-setup-storage)
+
 
 
 
