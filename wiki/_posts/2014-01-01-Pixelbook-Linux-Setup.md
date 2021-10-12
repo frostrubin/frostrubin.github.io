@@ -84,6 +84,7 @@ If you ever want to become root, use sudo su -
 
 ## Partitioning
 [Chromium OS > Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
+[Chromium OS > Partition Resizing](https://www.chromium.org/chromium-os/chromiumos-design-docs/partition-resizing)
 Chromium OS comes with 12 partitions pre-installed. Removing ANY of these partitions breaks chrome OS.
 The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a working Linux system. To do this, one has to understand the partitioning scheme.
 
@@ -101,6 +102,14 @@ The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a workin
 | 10	      | MiniOS B	                          | Recovery partition B, for upgrades. Must reside at the end of the disk. |
 | 11	      | Hibernate	                          | Small partition reserved for hibernation state.                         |
 | 12	      | EFI System Partition                | Contains 64-bit grub2 bootloader for EFI BIOSes, and second-stage syslinux bootloader for legacy BIOSes. |
+
+Each minimal-size partition (including the C kernel and C rootfs) is only 512 bytes, and is shoved into some space lost to filesystem alignment (between the primary partition table and the stateful partition). 64M of empty space is set aside for use by those reserved partitions if they ever need it.
+
+Bootable USB keys have the same layout, except that kernel B and rootfs B are minimal-size, and partition 1 is limited to 720M. The total USB image size is around 1.5G. When the USB image is installed on a fixed drive, the B image is duplicated from the A image, and partition 1 is made as large as possible so that the entire disk is in use.
+
+We want to use partition 6 or 7 to store our Linux installation. 
+This is made possible because the _physical_ layout on the Disk is actuall different from the GPT partitioning table:
+![Chrome OS physical partitioning](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_partition_layout.png?raw=true)
 
 
 
