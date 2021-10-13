@@ -164,6 +164,7 @@ GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
 
 ## Linux Specific Fixes
 - Fix Suspend & More: https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
+- Suspend via Script on specific USB Port: https://itectec.com/ubuntu/ubuntu-how-to-use-a-key-press-to-wake-a-suspended-laptop-when-using-a-kvm-switch/
 
 ## Linux Software
 - sudo apt update
