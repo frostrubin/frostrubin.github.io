@@ -238,8 +238,13 @@ To achieve this, we look at the routines of the chrx setup.
 - Plug the USB drive with the Linux Installer into the Pixelbook. Avoid using a USB hub.
 - Reboot by typing sudo reboot
 - On the "OS verification is OFF" screen press Ctrl+U to bypass the timeout and boot from USB immediately.
+  To be confirmed: why not use CTRL + L and start directly from SeaBIOS?
 - If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
 - XXX ???
+
+## SeaBios
+- Can be reached via CTRL + L on Boot
+- You may get an error saying “graphics initialization failed”; apparently this is a bug that can be fixed [by typing "help" and pressing enter twice](https://ubuntuforums.org/showthread.php?t=1594003).
 
 ## Disable USB Boot
 This does not completely prevent USB boot, since the Legacy Boot Mode (SeaBios) reachable via CTRL + L allows for USB booting too.
