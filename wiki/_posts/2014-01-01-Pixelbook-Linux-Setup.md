@@ -182,20 +182,20 @@ The partitions are listed with their labels, partition number, start block, and 
 It is recommended that you create - and understand - a table like below to grasp the logical order of partitions:
 
 
-| Number | Label      | Start   | Size     |
-| ------ | ---------- | ------- | -------- | 
-| 11	   | RWFW	      | 64	    | 16384    | 
-| 6	     | KERN-C	    | 16648	  | 1        | 
-| 7	     | ROOT-C	    | 16649	  | 1        | 
-| 9	     | reserved	  | 16450	  | 1        | 
-| 10	   | reserved	  | 16451	  | 1        | 
-| 2	     | KERN-A	    | 20480	  | 32768    | 
-| 4	     | KERN-B	    | 53248	  | 32768    | 
-| 8	     | OEM	      | 86016	  | 32768    | 
-| 12	   | EFI-SYSTEM	| 249856  | 65536    | 
-| 5	     | ROOT-B	    | 315392  | 4194304  | 
-| 3	     | ROOT-A	    | 4509696	| 4194304  | 
-| 1	     | STATE	    | 8704000	| 52367312 | 
+| Number | Label      | Start    | Size     |
+| ------ | ---------- | -------- | -------- | 
+| 11	   | RWFW	    | 64 	   | 16384    | 
+| 6	   | KERN-C	    | 16648	   | 1        | 
+| 7	   | ROOT-C	    | 16649	   | 1        | 
+| 9	   | reserved	 | 16450	   | 1        | 
+| 10	   | reserved	 | 16451	   | 1        | 
+| 2	   | KERN-A	    | 20480	   | 32768    | 
+| 4	   | KERN-B	    | 53248	   | 32768    | 
+| 8	   | OEM	       | 86016	   | 32768    | 
+| 12	   | EFI-SYSTEM | 249856   | 65536    | 
+| 5	   | ROOT-B	    | 315392   | 4194304  | 
+| 3	   | ROOT-A	    | 4509696	| 4194304  | 
+| 1	    | STATE	    | 8704000	| 52367312 | 
 
 Luckily, the STATE partition (which is the first one, logically) is right at the very end physically, which means we can shrink it easily. To do this, we can use cgpt add, which takes the partition number with -i, starting block with -b, and size in blocks with -s. For this, we will keep its starting point, block 8704000, the same and shrink the partition down to 10485760 blocks (5 GB):
 
@@ -208,7 +208,7 @@ Unfortunately, KERN-C and ROOT-C are wedged in the middle of other partitions, m
 Thus, KERN-C (the sixth partition) will now start at block 8704000+10485760+1=19189761 and span 1048576 blocks, while ROOT_C (the seventh) starts at 19189761+1048576+1=20238337. ROOT-C’s size is the amount we shaved off of STATE minus the size of KERN-C, or (52367312-10485760)-1048576=40832976. In cgpt, this translates to
 
 ``` 
-sudo cgpt add -i 6 -b 19189761 -s 1048576 /dev/mmcblk0
+sudo cgpt add -i 6 -b 19189761 -s 1048576  /dev/mmcblk0
 sudo cgpt add -i 7 -b 20238337 -s 40832976 /dev/mmcblk0
 ```
 
@@ -274,6 +274,20 @@ GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
 
 - So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: /usr/share/vboot/bin/set_gbb_flags.sh 0x489
 - Enable back the software write protection flashrom --wp-enable
+
+## Troubleshooting
+You’ve done something wrong and now Chrome OS doesn’t work, or you’re being dropped into a GRUB> prompt. 
+
+### Chrome OS Recovery
+If you are getting an error that "Chrome OS is missing or damaged" when trying to boot it, then you need to use Chrome OS Recovery. This will reset your Chromebook to its original out-of-box state (wiping your data), which also makes it useful as a way to go back to single-boot Chrome OS.
+
+### Linux install failed
+Does your Chrome OS still boot? If so, just wipe your KERN-C and ROOT-C partitions with mkfs.ext4 and try again, assuming that your partitions are the correct size; if all goes well this should preserve your Chrome OS installation.
+
+### Linux boot fails
+If you’re getting a black screen after pressing Ctrl+L, getting stuck at "Booting from hard disk", or a GRUB> prompt, it’s likely that the GRUB fix described above didn’t work. Double check to make sure you installed the boot loader to the correct partition, as well as did grub-install to the right place. Even if you have installed your Linux correctly, it can sometimes break after booting from a Live CD, or updating the Linux kernel.
+
+Just run the GRUB install step again and this should take care of the issue.
 
 ## Final Result
 - Boot Pixelbook
