@@ -195,21 +195,51 @@ It is recommended that you create - and understand - a table like below to grasp
 | 12	   | EFI-SYSTEM | 249856   | 65536    | 
 | 5	   | ROOT-B	    | 315392   | 4194304  | 
 | 3	   | ROOT-A	    | 4509696	| 4194304  | 
-| 1	    | STATE	    | 8704000	| 52367312 | 
+| 1	   | STATE	    | 8704000	| 52367312 | 
 
-Luckily, the STATE partition (which is the first one, logically) is right at the very end physically, which means we can shrink it easily. To do this, we can use cgpt add, which takes the partition number with -i, starting block with -b, and size in blocks with -s. For this, we will keep its starting point, block 8704000, the same and shrink the partition down to 10485760 blocks (5 GB):
+Luckily, the STATE partition (which is the first one, logically) is right at the very end physically, which means we can shrink it easily. To do this, we can use cgpt add, which takes the partition number with -i, starting block with -b, and size in blocks with -s. 
+
+STATE will keep start location. 
+KERN-C will be moved behind STATE
+ROOT-C will be moved behind KERN-C.
+
+The [chrx > setup-storage script](https://github.com/reynhout/chrx/blob/master/chrx-setup-storage) does this via nice logic:
 
 ```
-sudo cpgt add -i 1 -b 8704000 -s 10485760 /dev/mmcblk0
-```
+# Determine Target Disk (likely /dev/mmcblk)
+  CHRX_TARGET_DISK="`sudo rootdev -d -s`"
+# Get current partition sizes  
+  ckern_size="`sudo cgpt show -i 6 -n -s -q ${CHRX_TARGET_DISK}`"
+  croot_size="`sudo cgpt show -i 7 -n -s -q ${CHRX_TARGET_DISK}`"
+  state_size="`sudo cgpt show -i 1 -n -s -q ${CHRX_TARGET_DISK}`"
+# Sizes: Recommended size for Linux is Maximum Size of Chrome OS "state" minus 10GB
+#        Leaving 10GB for Chrome OS, Rest will become Linux
+  max_os_size=$((${state_size}/1024/1024/2))
+  os_size=$((${max_os_size} - 10))
+# Calculate new Partition sizes. ROOT-C will become our Linux partition
+  rootc_size=$((${os_size}*1024*1024*2)) # sector size for rootc
+  kernc_size=32768 # kernc is always 16MB
+# New STATE size with rootc and kernc subtracted from original
+  stateful_size=$((${state_size} - ${rootc_size} - ${kernc_size}))
+# Start stateful at the same spot it currently starts at
+  stateful_start="`sudo cgpt show -i 1 -n -b -q ${CHRX_TARGET_DISK}`"
+# Start kernc at stateful start plus stateful size
+  kernc_start=$((${stateful_start} + ${stateful_size}))
+# Start rootc at kernc start plus kernc size
+  rootc_start=$((${kernc_start} + ${kernc_size}))
+# Validate Manually
+  echo "  stateful_start ${stateful_start}"
+  echo "  stateful_size  ${stateful_size}"
+  echo "  kernc_start    ${kernc_start}"
+  echo "  kernc_size     ${kernc_size}"
+  echo "  rootc_start    ${rootc_start}"
+  echo "  rootc_size     ${rootc_size}"
 
-Unfortunately, KERN-C and ROOT-C are wedged in the middle of other partitions, making it impossible to increase their size without overwriting the subsequent ones. However, we can just change their base to fall right after STATE and expand them in the new space we have created. 
-
-Thus, KERN-C (the sixth partition) will now start at block 8704000+10485760+1=19189761 and span 1048576 blocks, while ROOT_C (the seventh) starts at 19189761+1048576+1=20238337. ROOT-C’s size is the amount we shaved off of STATE minus the size of KERN-C, or (52367312-10485760)-1048576=40832976. In cgpt, this translates to
-
-``` 
-sudo cgpt add -i 6 -b 19189761 -s 1048576  /dev/mmcblk0
-sudo cgpt add -i 7 -b 20238337 -s 40832976 /dev/mmcblk0
+# Start Partitioning
+  sudo umount -f /mnt/stateful_partition
+  sudo cgpt add -i 1 -b ${stateful_start} -s ${stateful_size} -l STATE ${CHRX_TARGET_DISK}
+  sudo cgpt add -i 6 -b ${kernc_start} -s ${kernc_size} -l KERN-C -t "kernel" ${CHRX_TARGET_DISK}
+  sudo cgpt add -i 7 -b ${rootc_start} -s ${rootc_size} -l ROOT-C ${CHRX_TARGET_DISK}
 ```
 
 With this done, you can reboot the system:
@@ -223,16 +253,12 @@ When Chrome OS boots up, it will repair itself, taking about five minutes (there
 Once you’re back in a shell, use mkfs.ext4 to initialize the partitions we will be using for Linux (KERN-C and ROOT-C, which are the sixth and seventh partitions in /dev/mmcblk0):
 
 ```
+sudo umount -R /dev/mmcblk0p6 2>/dev/null
+sudo umount -R /dev/mmcblk0p7 2>/dev/null
 sudo /sbin/mkfs.ext4 /dev/mmcblk0p6
 sudo /sbin/mkfs.ext4 /dev/mmcblk0p7
 sudo reboot
 ```
-
-To achieve this, we look at the routines of the chrx setup.
-- [GitHub > chrx > setup-storage.sh](https://github.com/reynhout/chrx/blob/master/chrx-setup-storage)
-
-
-
 
 ## Install Linux
 - Plug the USB drive with the Linux Installer into the Pixelbook. Avoid using a USB hub.
