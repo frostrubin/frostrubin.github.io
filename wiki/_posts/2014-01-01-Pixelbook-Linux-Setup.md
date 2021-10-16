@@ -74,6 +74,8 @@ From the warning screen, the following keyboard shortcuts are available:
 CTRL + ALT + XXX where the XXX key is the key in the F2 position which may be the refresh key or another key.
 Once you have the login prompt, you should see a set of instructions telling you about command-line access. By default, you can login as the chronos user with no password. This includes the ability to do password-less sudo. The instructions on the screen will tell you how you can set a password. They also tell you how to disable screen dimming.
 
+To get from the crosh shell to a full shell, use the command ```shell```.
+
 - In order to get back to the browser press:
 CTRL + ALT + YYY where the YYY key is the left-arrow key just above the number 1 on your keyboard.
 NOTE: The top-rows of the keyboard on a Chrome OS device are actually treated by Linux as the keys F1 through F10. Thus, the refresh key is actually F2 and the back key is actually F1.
