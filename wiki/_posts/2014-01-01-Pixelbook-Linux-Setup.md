@@ -267,9 +267,17 @@ sudo reboot
 - Reboot by typing sudo reboot
 - On the "OS verification is OFF" screen press CTRL+L to boot SeaBIOS.
 - Press ESC to get the SeaBIOS Boot menu. Choose the Linxu Install USB Stick.
-- ( Alternative would have been to press Ctrl+U directly after startup, to boot from USB immediately, however this is not recommended )
+- ( Alternative would have been to press Ctrl+U directly after startup, to boot from USB immediately, however this is not recommended. All future booting to Linux will also involve SeaBIOS. )
 - If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
-- XXX ???
+- Use the Installer to Install Linux. When the Installation Type is to be chosen **make sure to choose "Something else"**
+![Something Else](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_something_else.png?raw=true)
+- This will take you to the partition editor. Here, you need to modify the KERN-C and ROOT-C partitions. Click on them and them change them to have a “Ext4 journaling file system” (do not format the partitions! Leave the checkbox unchecked!); in addition, change the mount point for the first one to /boot and the second to / (this might cause the installer to prompt about performing a resize. You should be able to just hit back on the dialog and it should work out). 
+- Finally, change the device for boot loader installation to where KERN-C is. In the end, it should look something like this:
+![Partitions](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_partitions.png?raw=true)
+- Going to the next step will probably cause some warnings to pop up about not formatting; just skip through those. You don't want to format.
+- Continue with the rest of the installation as normal, however, DO NOT REBOOT YET.
+- XXX ?
+
 
 ## SeaBios
 - Can be reached via CTRL + L on Boot
