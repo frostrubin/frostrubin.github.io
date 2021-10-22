@@ -220,7 +220,7 @@ The [chrx > setup-storage script](https://github.com/reynhout/chrx/blob/master/c
   os_size=$((${max_os_size} - 10))
 # Calculate new Partition sizes. ROOT-C will become our Linux partition
   rootc_size=$((${os_size}*1024*1024*2)) # sector size for rootc
-  kernc_size=32768 # kernc is always 16MB
+  kernc_size=2097152 # kernc is always 1024MB
 # New STATE size with rootc and kernc subtracted from original
   stateful_size=$((${state_size} - ${rootc_size} - ${kernc_size}))
 # Start stateful at the same spot it currently starts at
