@@ -276,7 +276,68 @@ sudo reboot
 ![Partitions](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_partitions.png?raw=true)
 - Going to the next step will probably cause some warnings to pop up about not formatting; just skip through those. You don't want to format.
 - Continue with the rest of the installation as normal, however, DO NOT REBOOT YET.
-- XXX ?
+
+## Fixing GRUB
+Still in the linux installation environment, it is now time to "fix grub".
+[this guide](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/) as well as the [chrx chroot script](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot) both do this.
+
+```
+  sudo mkdir /mnt/boot
+  sudo mount /dev/mmcblk0p6 /mnt/boot
+  sudo mkdir /mnt/boot/grub
+  sudo grub-mkconfig -o /mnt/boot/grub/grub.cfg
+  # Abgleichen mit /etc/default/grub ! Warum generieren wir?
+```
+
+Now you should be able to edit the newly created /mnt/boot/grub/grub.cfg file. We want to make certain changes!
+
+```
+Find and comment out:
+GRUB_HIDDEN_TIMEOUT
+GRUB_TIMEOUT
+GRUB_CMDLINE_LINUX
+```
+
+The chrx chroot example config looks like this:
+
+```
+
+## boot settings
+##
+## GRUB_TIMEOUT        delay before boot (ESC for menu), in seconds
+## GRUB_TIMEOUT_STYLE  UI for delay (menu|countdown|hidden)
+GRUB_TIMEOUT=10
+GRUB_TIMEOUT_STYLE=menu
+GRUB_GFXMODE=1920x1080,1680x1050,1600x900,1366x768,1280x850,1024x768,auto
+GRUB_TERMINAL_OUTPUT=gfxterm
+## kernel parameters
+##
+## GRUB_CMDLINE_LINUX_DEFAULT   sets parms for normal boot
+## GRUB_CMDLINE_LINUX           sets parms for normal and recovery boot
+##
+##  quiet                     suppress most messages
+##  splash                    boot with splash screen
+##  boot=local                (redundant?)
+##  acpi_osi=Linux            add Linux to list of supported OS interfaces
+##  acpi_backlight=vendor     prefer vendor backlight driver
+##  add_efi_memmap            include EFI extensions to E820 BIOS map
+##  intel_pstate=enable       enable CPI power state management, cpupower(8)
+##  i915.modeset=1            setting for Intel 915 GPU/HD Audio chip
+##  tpm_tis.force=1           ignore ACPI TPM interrupts, poll instead
+##  tpm_tis.interrupts=0      skip TPM interrupt probing (redundant with prev)
+##  nmi_watchdog=panic,lapic  panic when NMI watchdog expires or local APIC
+##  elevator=noop             do not reorder disk IO to minimize head seeks
+##  resume=/dev/sda5          save hibernation state to /dev/sda5
+##  noresume                  no resume partition (for hibernate)
+##  noswap                    no swap partition
+##
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash boot=local acpi_osi=Linux acpi_backlight=vendor add_efi_memmap intel_pstate=enable i915.modeset=1 tpm_tis.force=1 tpm_tis.interrupts=0 nmi_watchdog=panic,lapic elevator=noop noresume noswap"
+```
+
+
+```
+  sudo grub-install --boot-directory=/mnt/boot /dev/mmcblk0 --force
+```
 
 
 ## SeaBios
