@@ -298,7 +298,7 @@ GRUB_TIMEOUT
 GRUB_CMDLINE_LINUX
 ```
 
-The chrx chroot example config looks like this:
+The chrx chroot example config, which is only APPENDED to existing config, looks like this:
 
 ```
 
