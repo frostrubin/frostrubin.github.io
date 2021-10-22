@@ -339,6 +339,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash boot=local acpi_osi=Linux acpi_backligh
   sudo grub-install --boot-directory=/mnt/boot /dev/mmcblk0 --force
 ```
 
+Now it is time to leave the installer environment and reboot.
+
 
 ## SeaBios
 - Can be reached via CTRL + L on Boot
@@ -390,6 +392,11 @@ Just run the GRUB install step again and this should take care of the issue.
 - Boot Pixelbook
 - Press CTRL + D or wait 30 seconds -> Boots Chrome OS
 - Press CTRL + L -> Opens SeaBios, which boots Linux
+
+## Linux Setup
+Ensure that the correct mount options in /etc/fstab are set!
+Look at the options ChromeOS uses!
+chrx uses ```"${CHRX_ROOT_PARTITION} / ext4 defaults,discard,relatime 1 1"```
 
 ## Linux Specific Fixes
 - Fix Suspend & More: https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
