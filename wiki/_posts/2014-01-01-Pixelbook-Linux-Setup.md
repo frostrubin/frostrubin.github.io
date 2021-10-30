@@ -130,21 +130,21 @@ $ sudo cgpt show /dev/mmcblk0
        0           1          PMBR (Boot GUID: BB000A0D-0001-0EB4-CD10-AC3C0075F4C3)
        1           1          Pri GPT header
        2          32          Pri GPT table
- 8704000    52367312       1  Label: "STATE"
+17092608   227151872       1  Label: "STATE"
                               Type: Linux data
                               UUID: 56FACA9B-B561-5E4E-B225-67FF9101E64A
    20480       32768       2  Label: "KERN-A"
                               Type: ChromeOS kernel
                               UUID: 0981A5B2-C79A-E145-802A-DEA62009F8DA
                               Attr: priority=1 tries=0 successful=1 
- 4509696     4194304       3  Label: "ROOT-A"
+  870400     8388608       3  Label: "ROOT-A"
                               Type: ChromeOS rootfs
                               UUID: BDBF49E7-B855-D04E-B09E-FDF2FE9E72A9
    53248       32768       4  Label: "KERN-B"
                               Type: ChromeOS kernel
                               UUID: F7D51A74-2D18-5649-B352-B3C779269C71
                               Attr: priority=0 tries=15 successful=0 
-  315392     4194304       5  Label: "ROOT-B"
+  315392     8388608       5  Label: "ROOT-B"
                               Type: ChromeOS rootfs
                               UUID: D47975C2-3B96-F54A-AAA7-394802C5BED2
    16648           1       6  Label: "KERN-C"
@@ -170,28 +170,28 @@ $ sudo cgpt show /dev/mmcblk0
                               Type: EFI System Partition
                               UUID: CDCA82E4-547E-BE4E-AD55-C3B5EFD5DF79
                               Attr: legacy_boot=1 
-61071327          32          Sec GPT table
-61071359           1          Sec GPT header
+244277215          32          Sec GPT table
+244277247           1          Sec GPT header
 ```
 
 The partitions are listed with their labels, partition number, start block, and size. Blocks are 512 bytes in length; notice that while the table is listed in logical order, it is not in physical order–the blocks are actually in a different order on disk.
 
 It is recommended that you create - and understand - a table like below to grasp the logical order of partitions:
 
-| Number | Label      | Start    | Size     |
-| ------ | ---------- | -------- | -------- | 
-| 11	   | RWFW	    | 64 	   | 16384    | 
-| 6	   | KERN-C	    | 16648	   | 1        | 
-| 7	   | ROOT-C	    | 16649	   | 1        | 
-| 9	   | reserved	 | 16450	   | 1        | 
-| 10	   | reserved	 | 16451	   | 1        | 
-| 2	   | KERN-A	    | 20480	   | 32768    | 
-| 4	   | KERN-B	    | 53248	   | 32768    | 
-| 8	   | OEM	       | 86016	   | 32768    | 
-| 12	   | EFI-SYSTEM | 249856   | 65536    | 
-| 5	   | ROOT-B	    | 315392   | 4194304  | 
-| 3	   | ROOT-A	    | 4509696	| 4194304  | 
-| 1	   | STATE	    | 8704000	| 52367312 | 
+| Number | Label      | Start    | Size      |
+| ------ | ---------- | -------- | --------- | 
+| 11	   | RWFW	    | 64 	   | 16384     | 
+| 6	   | KERN-C	    | 16648	   | 1         | 
+| 7	   | ROOT-C	    | 16649	   | 1         | 
+| 9	   | reserved	 | 16450	   | 1         |  
+| 10	   | reserved	 | 16451	   | 1         | 
+| 2	   | KERN-A	    | 20480	   | 32768     | 
+| 4	   | KERN-B	    | 53248	   | 32768     | 
+| 8	   | OEM	       | 86016	   | 32768     | 
+| 12	   | EFI-SYSTEM | 249856   | 65536     | 
+| 5	   | ROOT-B	    | 315392   | 8388608   | 
+| 3	   | ROOT-A	    | 870400	| 8388608   | 
+| 1	   | STATE	    | 17092608	| 227151872 | 
 
 Luckily, the STATE partition (which is the first one, logically) is right at the very end physically, which means we can shrink it easily. To do this, we can use cgpt add, which takes the partition number with -i, starting block with -b, and size in blocks with -s. 
 
