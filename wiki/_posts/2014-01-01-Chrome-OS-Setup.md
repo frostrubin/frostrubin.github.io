@@ -9,14 +9,11 @@ category: wiki
 - Google Pixelbook
 - Power Adapter: 45W USB-C
 
-## Switching to Beta Channel
-- Settings => About Chrome OS => Detailed Build Information => Change Channel
-
 ## Settings
 - Go over all Settings
 - Go over all Android Settings
 
-## Most importand Key bindings
+## Importand Key bindings
 - Get a List of Keyboard Shortcuts: CTRL+ALT+/
 - Open a Terminal: CTRL+ALT+T
   - Type 'help' or 'help_advanced' to get a list of all possible commands
@@ -29,8 +26,6 @@ category: wiki
 - [Umlaut Helper](https://github.com/frostrubin/Chrome-Extensions)
 - [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb)
 - [Extension Developer Tools](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc)
-- [Calculator](https://chrome.google.com/webstore/detail/calculator/joodangkbfjnajiiifokapkpmhfnpleo)
-- [Google Keep](https://chrome.google.com/webstore/detail/google-keep-notes-and-lis/hmjkmjkepdijhoojdojkdfohbdgmmhki)
 - [JSTorrent](https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb)
 - [Secure Shell](https://chrome.google.com/webstore/detail/secure-shell/pnhechapfaindjhompbnflcldabbghjo)
 - [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
@@ -47,24 +42,12 @@ u2f_flags u2f,user_keys
 
 See also: https://sites.google.com/a/chromium.org/dev/chromium-os/u2f-ecdsa-vulnerability
 
-## Disable Media Playback Notifications
-chrome://flags/#enable-media-session-notifications 
-
-## Enable 3-finger Desktop Switching
-chrome://flags/#enable-virtual-desks-gestures
-
 ## Enable GPU for Linux
 1. Enable here: chrome://flags/#crostini-gpu-support
 2. Restart
 3. sudo apt update; sudo apt dist-upgrade
 4. glxinfo -B
 5. sudo apt install cros-gpu-alpha ( Make sure you want this ! )
-
-## Backup Linux Container
-1. Enable here: chrome://flags/#crostini-backup
-2. Restart
-3. lxc image list
-4. lxc publish penguin --alias backup reports
 
 ## Install AWS in Linux Container
 ```
@@ -79,7 +62,6 @@ aws configure
 - [All Chrome Extensions made by Google](https://chrome.google.com/webstore/category/collection/by_google)
 - [All Android Apps made by Google](https://play.google.com/store/apps/dev?id=5700313618786177705&hl=en)
 - [Building a more Secure Dev Environment](https://blog.lessonslearned.org/building-a-more-secure-development-chromebook/)
-
 
 ### Extension Development
 - [List of APIs](https://developer.chrome.com/extensions/api_index)
@@ -131,6 +113,6 @@ aws configure
     done
 
 ### Create Bootable Media
-1. Download Googles Official [Chromebook Recovery Utility](https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai)
+1. Download Googles Official [Chromebook Recovery Utility](https://chrome.google.com/webstore/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm)
 2. Rename your .ISO file to .BIN
 3. Use the Cog Menu in the App to create a bootable USB Stick
