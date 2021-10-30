@@ -238,6 +238,35 @@ The [chrx > setup-storage script](https://github.com/reynhout/chrx/blob/master/c
   sudo cgpt add -i 7 -b ${rootc_start} -s ${rootc_size} -l ROOT-C ${CHRX_TARGET_DISK}
 ```
 
+For my Pixelbook i5 this logic did result in:
+
+```
+sudo rootdev -d -s
+# /dev/mmcblk0
+
+ckern_size = 1
+croot_size = 1
+state_size = 227151872
+
+max_os_size = 108.314453125
+os_size = 95
+
+rootc_size = 199229440
+kernc_size = 2097152
+
+stateful_size = 25825280
+stateful_start = 17092608
+
+kernc_start = 42917888
+rootc_start = 45015040
+# Start Partitioning
+sudo umount -f /mnt/stateful_partition
+sudo cgpt add -i 1 -b 17092608 -s 25825280  -l STATE /dev/mmcblk0
+sudo cgpt add -i 6 -b 42917888 -s 2097152   -l KERN-C -t "kernel" /dev/mmcblk0
+sudo cgpt add -i 7 -b 45015040 -s 199229440 -l ROOT-C /dev/mmcblk0
+```
+
+
 With this done, you can reboot the system:
 
 ```
