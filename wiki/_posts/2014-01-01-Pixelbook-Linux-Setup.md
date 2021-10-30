@@ -266,6 +266,18 @@ sudo cgpt add -i 6 -b 42917888 -s 2097152   -l KERN-C -t "kernel" /dev/mmcblk0
 sudo cgpt add -i 7 -b 45015040 -s 199229440 -l ROOT-C /dev/mmcblk0
 ```
 
+Now we use the firmware script from [mrchromebox.tech](https://mrchromebox.tech/#fwscript) to update the SeaBIOS Legacy Firmware.
+**Follow the advice on the site!***
+
+As of 2021.10.31 this was:
+```
+cd; curl -LO mrchromebox.tech/firmware-util.sh
+sudo install -Dt /usr/local/bin -m 755 firmware-util.sh
+sudo firmware-util.sh
+```
+
+```
+
 With this done, you can reboot the system:
 
 ```
@@ -274,44 +286,52 @@ sudo reboot
 
 When Chrome OS boots up, it will repair itself, taking about five minutes (there’s a small, somewhat accurate timer in the top left that tracks progress). Once it’s done booting, drop back into a shell; we now need to format the new partitions as ext4 so they will be usable from Linux.
 
-Once you’re back in a shell, use mkfs.ext4 to initialize the partitions we will be using for Linux (KERN-C and ROOT-C, which are the sixth and seventh partitions in /dev/mmcblk0):
+Once you’re back in a shell, use ```mkfs.ext4``` to initialize the partitions we will be using for Linux (KERN-C and ROOT-C, which are the sixth and seventh partitions in /dev/mmcblk0):
 
 ```
-sudo umount -R /dev/mmcblk0p6 2>/dev/null
-sudo umount -R /dev/mmcblk0p7 2>/dev/null
+sudo umount -R /dev/mmcblk0p6
+sudo umount -R /dev/mmcblk0p7
 sudo /sbin/mkfs.ext4 /dev/mmcblk0p6
 sudo /sbin/mkfs.ext4 /dev/mmcblk0p7
-sudo reboot
+```
+
+Also: explicitly set the boot options **again**:
+
+```
+sudo crossystem dev_boot_usb=1
+sudo crossystem dev_boot_altfw=1
 ```
 
 ## Install Linux
 - Plug the USB drive with the Linux Installer into the Pixelbook. Avoid using a USB hub.
-- Reboot by typing sudo reboot
+- Reboot by typing ```sudo reboot```
 - On the "OS verification is OFF" screen press CTRL+L to boot SeaBIOS.
-- Press ESC to get the SeaBIOS Boot menu. Choose the Linxu Install USB Stick.
-- ( Alternative would have been to press Ctrl+U directly after startup, to boot from USB immediately, however this is not recommended. All future booting to Linux will also involve SeaBIOS. )
-- If the device tries to boot from USB, either because that is the default or you pressed Ctrl+U, and the device fails to boot from USB you'll hear a fairly loud BEEP. Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
+- Press ESC to get the SeaBIOS Boot menu. You only have about 2 seconds for this! Choose the Linxu Install USB Stick.
+- Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
 - Use the Installer to Install Linux. When the Installation Type is to be chosen **make sure to choose "Something else"**
 ![Something Else](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_something_else.png?raw=true)
 - This will take you to the partition editor. Here, you need to modify the KERN-C and ROOT-C partitions. Click on them and them change them to have a “Ext4 journaling file system” (do not format the partitions! Leave the checkbox unchecked!); in addition, change the mount point for the first one to /boot and the second to / (this might cause the installer to prompt about performing a resize. You should be able to just hit back on the dialog and it should work out). 
 - Finally, change the device for boot loader installation to where KERN-C is. In the end, it should look something like this:
 ![Partitions](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_partitions.png?raw=true)
-- Going to the next step will probably cause some warnings to pop up about not formatting; just skip through those. You don't want to format.
-- Continue with the rest of the installation as normal, however, DO NOT REBOOT YET.
+- Going to the next step will probably cause some warnings to pop up about not formatting; just skip through those. **You don't want to format.**
+- If the Linux installer makes any changes to the partitions (other than you having assigned mount points) it will likely result in an unbootable ChromeOS.
 
 ## Fixing GRUB
-Still in the linux installation environment, it is now time to "fix grub".
-[this guide](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/) as well as the [chrx chroot script](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot) both do this.
+Your Linux installation - in the current state - will NOT boot yet. This is because GRUB is in a broken state.
+It is now time to "fix grub". I used an Ubuntu Linux Live USB Stick for this, which I booted via CTRL + L then choosing USB Stick in SeaBIOS.
+Becuase the main Debian installation did not know the command ```grub-install```.
+
+In Ubuntu I had trouble with the screen rotation, ```xrandr -o normal``` fixed this.
+
+[this guide](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/) as well as the [chrx chroot script](https://github.com/reynhout/chrx/blob/master/dist/chrx-install-chroot) both do the following changes to GRUB Defaults:
 
 ```
   sudo mkdir /mnt/boot
   sudo mount /dev/mmcblk0p6 /mnt/boot
   sudo mkdir /mnt/boot/grub
-  sudo grub-mkconfig -o /mnt/boot/grub/grub.cfg
-  # Abgleichen mit /etc/default/grub ! Warum generieren wir?
+  nano /etc/default/grub
 ```
-
-Now you should be able to edit the newly created /mnt/boot/grub/grub.cfg file. We want to make certain changes!
+We want to make certain changes!
 
 ```
 Find and comment out:
@@ -323,7 +343,6 @@ GRUB_CMDLINE_LINUX
 The chrx chroot example config, which is only APPENDED to existing config, looks like this:
 
 ```
-
 ## boot settings
 ##
 ## GRUB_TIMEOUT        delay before boot (ESC for menu), in seconds
@@ -356,12 +375,51 @@ GRUB_TERMINAL_OUTPUT=gfxterm
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash boot=local acpi_osi=Linux acpi_backlight=vendor add_efi_memmap intel_pstate=enable i915.modeset=1 tpm_tis.force=1 tpm_tis.interrupts=0 nmi_watchdog=panic,lapic elevator=noop noresume noswap"
 ```
 
+Using this as a template, my final Debian /etc/defaults/grub file looked like this:
+```
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+# For full documentation of the options in this file, see:
+#   info -f grub -n 'Simple configuration'
+ 
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash boot=local acpi_osi=Linux acpi_backlight=vendor add_efi_memmap intel_pstate=enable i915.modeset=1 tpm_tis.force=1 tpm_tis.interrupts=0 nmi_watchdog=panic,lapic elevator=noop noresume"
+GRUB_CMDLINE_LINUX=""
+ 
+# Uncomment to enable BadRAM filtering, modify to suit your needs
+# This works with Linux (no patch required) and with any kernel that obtains
+# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+#GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+ 
+# Uncomment to disable graphical terminal (grub-pc only)
+#GRUB_TERMINAL=console
+ 
+# The resolution used on graphical terminal
+# note that you can use only modes which your graphic card supports via VBE
+# you can see them in real GRUB with the command `vbeinfo'
+GRUB_GFXMODE=1920x1080,1680x1050,1280x1024,1440x900,1152x864,1024x768,auto
+GRUB_TERMINAL_OUTPUT=gfxterm
+ 
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+#GRUB_DISABLE_LINUX_UUID=true
+ 
+# Uncomment to disable generation of recovery mode menu entries
+#GRUB_DISABLE_RECOVERY="true"
+ 
+# Uncomment to get a beep at grub start
+#GRUB_INIT_TUNE="480 440 1"
+```
+
+And after having updated it, 
 
 ```
-  sudo grub-install --boot-directory=/mnt/boot /dev/mmcblk0 --force
+sudo grub-mkconfig -o /mnt/boot/grub/grub.cfg
+sudo grub-install --boot-directory=/mnt/boot /dev/mmcblk0 --force
 ```
 
-Now it is time to leave the installer environment and reboot.
+Now it is time to leave the ubuntu environment and reboot.
 
 
 ## SeaBios
