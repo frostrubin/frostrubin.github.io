@@ -266,7 +266,6 @@ sudo cgpt add -i 6 -b 42917888 -s 2097152   -l KERN-C -t "kernel" /dev/mmcblk0
 sudo cgpt add -i 7 -b 45015040 -s 199229440 -l ROOT-C /dev/mmcblk0
 ```
 
-
 With this done, you can reboot the system:
 
 ```
@@ -376,26 +375,6 @@ This does not completely prevent USB boot, since the Legacy Boot Mode (SeaBios) 
 - sudo crossystem dev_boot_usb=0
 - sudo reboot 
 
-## Change GBB Options to prevent accidental Developer Mode Deactivation
-This step requires a short disabling of the Firmware write protection, changing GBB Flags, then re-enabling the write protection
-
-- [ArchLinux Wiki > Chrome OS Devices > Boot to SeaBios by Default](https://wiki.archlinux.org/title/Chrome_OS_devices#Boot_to_SeaBIOS_by_default)
-
-- Enter a superuser shell by booting in developer mode, CTRL + D, accessing VT2 and logging in as chronos
-- Disable Firmware write protection via flashrom --wp-disable
-- Check that write protection is disabled flashrom --wp-status
-- Run set_gbb_flags.sh with no parameters /usr/share/vboot/bin/set_gbb_flags.sh
-This will list all of the available flags. The ones of interest to us are:
-
-```
-GBB_FLAG_DEV_SCREEN_SHORT_DELAY 0x00000001  
-GBB_FLAG_FORCE_DEV_SWITCH_ON 0x00000008
-GBB_FLAG_FORCE_DEV_BOOT_LEGACY 0x00000080
-GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
-```
-
-- So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: /usr/share/vboot/bin/set_gbb_flags.sh 0x489
-- Enable back the software write protection flashrom --wp-enable
 
 ## Troubleshooting
 You’ve done something wrong and now Chrome OS doesn’t work, or you’re being dropped into a GRUB> prompt. 
@@ -411,6 +390,9 @@ If you’re getting a black screen after pressing Ctrl+L, getting stuck at "Boot
 
 Just run the GRUB install step again and this should take care of the issue.
 
+## Chrome OS Security
+Remember that ChromeOS now has Developer Mode enabled! Access a terminal and use ```sudo chromeos-setdevpasswd``` to set a password for ```chronos``` !
+
 ## Final Result
 - Boot Pixelbook
 - Press CTRL + D or wait 30 seconds -> Boots Chrome OS
@@ -422,6 +404,9 @@ Ensure that the correct mount options in ```/etc/fstab``` for ```/boot``` as wel
 chrx uses ```ext4 defaults,discard,relatime 1 1"```
 
 ChromeOS uses ```ext4 rw,seclabel,nodev,noatime,commit=600
+
+I decided to give both ```/boot``` and ```/``` the following options: ```noatime,commit=600```
+Meaning that after copying data in the terminal via mv, cp, rsync, etc. I explictily call ```sync``` in order to be 100% sure to not lose data.
 
 
 ## Linux Specific Fixes
@@ -457,3 +442,25 @@ Windows® 10 WiFi package drivers 22.70.0 for the AX210/AX200/9000/8000 series I
 - Run the driver installer, then go into Device Manager and point any unknown devices to the driver installation folder to search. At the end, you'll have a handful of unknown devices without drivers still.
 
 The main problem is that it is only possible after removing the Firmware Write Protect and installing a UEFI Firmware.
+
+## Change GBB Options to prevent accidental Developer Mode Deactivation
+This step requires a short disabling of the Firmware write protection, changing GBB Flags, then re-enabling the write protection.
+
+**For the Pixelbook this can only be done by physically opening the device and using a special debugging cable!**
+
+- [ArchLinux Wiki > Chrome OS Devices > Boot to SeaBios by Default](https://wiki.archlinux.org/title/Chrome_OS_devices#Boot_to_SeaBIOS_by_default)
+- Enter a superuser shell by booting in developer mode, ```CTRL + D```, accessing VT2 and logging in as chronos
+- Disable Firmware write protection via ```flashrom --wp-disable```
+- Check that write protection is disabled ```flashrom --wp-status```
+- Run set_gbb_flags.sh with no parameters ```/usr/share/vboot/bin/set_gbb_flags.sh```
+This will list all of the available flags. The ones of interest to us are:
+
+```
+GBB_FLAG_DEV_SCREEN_SHORT_DELAY 0x00000001  
+GBB_FLAG_FORCE_DEV_SWITCH_ON 0x00000008
+GBB_FLAG_FORCE_DEV_BOOT_LEGACY 0x00000080
+GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY 0x00000400
+```
+
+- So, to set SeaBIOS as default, with a 1s timeout, prevent accidentally exiting Developer Mode via spacebar, and ensure Legacy Boot Mode remains enabled in the event of battery drain/disconnect, we set the flags as such: ```/usr/share/vboot/bin/set_gbb_flags.sh 0x489```
+- Enable back the software write protection ```flashrom --wp-enable```
