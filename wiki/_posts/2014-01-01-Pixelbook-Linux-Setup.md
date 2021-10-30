@@ -451,9 +451,9 @@ Remember that ChromeOS now has Developer Mode enabled! Access a terminal and use
 ## Linux Setup
 Ensure that the correct mount options in ```/etc/fstab``` for ```/boot``` as well as ```/``` are set!
 
-chrx uses ```ext4 defaults,discard,relatime 1 1"```
+chrx uses ```ext4 defaults,discard,relatime 1 1```
 
-ChromeOS uses ```ext4 rw,seclabel,nodev,noatime,commit=600
+ChromeOS uses ```ext4 rw,seclabel,nodev,noatime,commit=600```
 
 I decided to give both ```/boot``` and ```/``` the following options: ```noatime,commit=600```
 Meaning that after copying data in the terminal via mv, cp, rsync, etc. I explictily call ```sync``` in order to be 100% sure to not lose data.
