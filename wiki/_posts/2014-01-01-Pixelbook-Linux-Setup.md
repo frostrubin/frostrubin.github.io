@@ -210,7 +210,7 @@ The [chrx > setup-storage script](https://github.com/reynhout/chrx/blob/master/c
   croot_size="`sudo cgpt show -i 7 -n -s -q ${CHRX_TARGET_DISK}`"
   state_size="`sudo cgpt show -i 1 -n -s -q ${CHRX_TARGET_DISK}`"
 # Sizes: Recommended size for Linux is Maximum Size of Chrome OS "state" minus 10GB
-#        Leaving 10GB for Chrome OS, Rest will become Linux
+# Leaving 10GB for Chrome OS, Rest will become Linux
   max_os_size=$((${state_size}/1024/1024/2))
   os_size=$((${max_os_size} - 10))
 # Calculate new Partition sizes. ROOT-C will become our Linux partition
@@ -268,15 +268,14 @@ sudo cgpt add -i 7 -b 45015040 -s 199229440 -l ROOT-C /dev/mmcblk0
 ```
 
 Now we use the firmware script from [mrchromebox.tech](https://mrchromebox.tech/#fwscript) to update the SeaBIOS Legacy Firmware.
-**Follow the advice on the site!***
+**Follow the advice on the site!**
 
 As of 2021.10.31 this was:
+
 ```
 cd; curl -LO mrchromebox.tech/firmware-util.sh
 sudo install -Dt /usr/local/bin -m 755 firmware-util.sh
 sudo firmware-util.sh
-```
-
 ```
 
 With this done, you can reboot the system:
