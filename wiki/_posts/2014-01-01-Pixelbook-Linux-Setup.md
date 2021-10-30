@@ -388,9 +388,12 @@ Just run the GRUB install step again and this should take care of the issue.
 - Press CTRL + L -> Opens SeaBios, which boots Linux
 
 ## Linux Setup
-Ensure that the correct mount options in /etc/fstab are set!
-Look at the options ChromeOS uses!
-chrx uses ```"${CHRX_ROOT_PARTITION} / ext4 defaults,discard,relatime 1 1"```
+Ensure that the correct mount options in ```/etc/fstab``` for ```/boot``` as well as ```/``` are set!
+
+chrx uses ```ext4 defaults,discard,relatime 1 1"```
+
+ChromeOS uses ```ext4 rw,seclabel,nodev,noatime,commit=600
+
 
 ## Linux Specific Fixes
 - Fix Suspend & More: https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
@@ -405,22 +408,10 @@ chrx uses ```"${CHRX_ROOT_PARTITION} / ext4 defaults,discard,relatime 1 1"```
 
 ## Install Chrome
 ```
-curl -O https://dl-ssl.google.com/linux/linux_signing_key.pub
-sudo apt-key add linux_signing_key.pub
-sudo add-apt-repository -y "deb https://dl.google.com/linux/chrome/deb/ stable main"
-sudo apt update
-sudo apt install google-chrome-stable
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+google-chrome
 ```
-
-## Linux Ideas
-- openbox
-- tint2 dock
-- obconf
-- obmenu
-- lxappearance
-- lxappearance-obconf
-
-- https://www.youtube.com/watch?v=eRKtkmQ4yGI
 
 ## Windows
 - [Reddit > Chrultrabook > Getting Started](https://www.reddit.com/r/chrultrabook/comments/aufp1q/getting_started_read_this_first/)
@@ -435,3 +426,5 @@ Windows® 10 WiFi package drivers 22.70.0 for the AX210/AX200/9000/8000 series I
 - TapToClick Utility fixes missing tap-to-click functionality in the Pixelbook's touchpad driver
 [KBL audio drivers] (https://mrchromebox.tech/files/windrv/kbl_cros_drivers_1.0.exe) 
 - Run the driver installer, then go into Device Manager and point any unknown devices to the driver installation folder to search. At the end, you'll have a handful of unknown devices without drivers still.
+
+The main problem is that it is only possible after removing the Firmware Write Protect and installing a UEFI Firmware.
