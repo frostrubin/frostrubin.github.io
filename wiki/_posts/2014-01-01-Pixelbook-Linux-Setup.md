@@ -6,8 +6,8 @@ category: wiki
 ---
 
 ## About
-This page is a collection of various guides and hints that detail how to set up Linux booting on a Google Pixelbook.
-I have not yet tested any of this, so far it is just a collection.
+This page describes the setup process that I used to dual-boot my Pixelbook with Linux and Chrome OS.
+It is based on various other guides and hints, listed below.
 
 ## Sources
 - [Chromium OS - Disk Format](https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format)
@@ -25,8 +25,8 @@ I have not yet tested any of this, so far it is just a collection.
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
 Without flashing the firmware, explicitly NOT having to remove/disable the firmware write-protect.
-Without curl'ing unknown scripts into a root shell.
 Using [Legacy Boot Mode](https://mrchromebox.tech/#bootmodes).
+This will put Chrome OS into "Developer Mode" but we won't enable additional "Debugging Features".
 
 **All data on the Pixelbook is wiped in the process.**
 
@@ -49,43 +49,40 @@ Further Safety Net: [Google Support > Chromebook wiederherstellen](https://suppo
 - [Chromium OS - Developer Mode](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_mode.md)
 - [Chromium OS - Firmware Keyboard Interface](https://chromium.googlesource.com/chromiumos/docs/+/master/debug_buttons.md#Firmware-Keyboard-Interface)
 
-Note that Developer Mode disables security features and may leave your device open to attack. Only enable if you understand the risks.
+**Note that Developer Mode disables security features and may leave your device open to attack. Only enable if you understand the risks.**
 
 - Turn off your chromebook
 - Press and hold the Esc key, refresh key, then press the power button at the same time. You should enter Recovery mode.
 - When the "Chrome OS is missing or damaged. Please insert a recovery USB stick or SD Card." message shows up, press and hold the Ctrl and D keys simultaneously.
 - Some Chromebooks may require you to turn OS verification off. Press Enter (if required).
-- Wait for the device to restart and go through the Chromebook setup process. This will take several minutes. Initially it may not appear to be doing anything. Let the device sit for a minute or two. You will hear two loud BEEPs early in the process. The process is complete when you hear two more loud BEEPs.
-- You will get an odd screen saying that OS verification is off. Keep in mind this screen will happen every single time you boot up.
+- Wait for the device to restart and go through the Chromebook setup process. This will take several minutes. Initially it may not appear to be doing anything. Let the device sit for a minute or two. You will hear two loud BEEPs early in the process. 
+- The process is ONLY complete when you hear two more loud BEEPs! It might boot multiple times in-between.
+
+- You will get an odd screen saying that OS verification is off.
 - Press Ctrl and D to restart successfully.
 
-From now on this there will be a warning screen on every boot. The screen will time out after 30 seconds, playing a warning beep.
+From now on this screen with the warning will come up on every boot. The screen will time out after 30 seconds, playing a warning beep.
 From the warning screen, the following keyboard shortcuts are available:
 - Ctrl + D: Boot the system from the internal disk (Chrome OS in Developer Mode)
-- Ctrl + U: Boot the system from an external USB stick or SD card. The option crossystem dev_boot_usb=1 must be set from the command line before this option is available.
-- Ctrl + L: Chain-load an alternative bootloader (e.g. SeaBIOS). The option crossystem dev_boot_legacy=1 must be set from the command line before this option is available.
+- Ctrl + U: Boot the system from an external USB stick or SD card. The option ```crossystem dev_boot_usb=1``` must be set from the command line before this option is available.
+- Ctrl + L: Chain-load an alternative bootloader (e.g. SeaBIOS). The option crossystem ```dev_boot_altfw=1``` must be set from the command line before this option is available.
 
 ## Enable Legacy Boot Mode & USB Boot
 - Start the Chromebook
 - You should see a screen that says "OS verification is OFF" and approximately 30 seconds later (or use CTRL + D to speed up) the boot will continue. 
-- Wait for the Welcome or Login screen to load. Ignore any link for "Enable debugging features".
+- Wait for the Welcome or Login screen to load. **Ignore any link for "Enable debugging features".**
 - Get to a command prompt. Details:
 - One way to get the login prompt is through something called VT-2, or “virtual terminal 2”. You can get to VT-2 by pressing:
 CTRL + ALT + XXX where the XXX key is the key in the F2 position which may be the refresh key or another key.
-Once you have the login prompt, you should see a set of instructions telling you about command-line access. By default, you can login as the chronos user with no password. This includes the ability to do password-less sudo. The instructions on the screen will tell you how you can set a password. They also tell you how to disable screen dimming.
+NOTE: The top-rows of the keyboard on a Chrome OS device are actually treated by Linux as the keys F1 through F10. Thus, the refresh key is actually F2 and the back key is actually F1. NOTE: Kernel messages show up on VT-8.
+- Once you have the login prompt, you should see a set of instructions telling you about command-line access. By default, you can login as user ```chronos``` with no password. This includes the ability to do password-less sudo. The instructions on the screen will tell you how you can set a password.
 
 To get from the crosh shell to a full shell, use the command ```shell```.
 
-- In order to get back to the browser press:
-CTRL + ALT + YYY where the YYY key is the left-arrow key just above the number 1 on your keyboard.
-NOTE: The top-rows of the keyboard on a Chrome OS device are actually treated by Linux as the keys F1 through F10. Thus, the refresh key is actually F2 and the back key is actually F1.
-NOTE: Kernel messages show up on VT-8.
+- In order to get back to the browser press: CTRL + ALT + F1 (Back key)
 - Press Ctrl + Alt + Refresh to enter a command shell. If pressing this key combination has no effect, try rebooting the Pixelbook once more.
-- Enter 'chronos' as the user with a blank password
-- Follow the on-screen instructions to set a password! Since your device will be permanently in developer mode, this is important!
-- Enable USB booting by running sudo crossystem dev_boot_usb=1
-- Enable Legacy Boot mode by running sudo crossystem dev_boot_legacy=1
-- (Optional) Default to USB booting by running sudo crossystem dev_default_boot=usb (Not recommended because booting default from usb is insecure)
+- Enable USB booting by running ```sudo crossystem dev_boot_usb=1```
+- Enable Legacy Boot mode by running ```sudo crossystem dev_boot_altfw=1```
 
 If you ever want to become root, use sudo su -
 
@@ -97,36 +94,34 @@ The goal of "proper" partitioning is to keep ChromeOS intact _and_ have a workin
 
 | Partition | Usage                                     | Purpose                                                                 |
 | --------- | ----------------------------------------- | ----------------------------------------------------------------------- |
-| 1	        | STATE user state, aka "stateful partition | User's browsing history, downloads, cache, etc. Encrypted per-user.     |
-| 2	        | KERN-A kernel A                           | Initially installed kernel.                                             |
-| 3	        | ROOT-A rootfs A                           | Initially installed rootfs.                                             |
-| 4	        | KERN-B kernel B                           | Alternate kernel, for use by automatic upgrades.                        |
-| 5	        | ROOT-B rootfs B                           | Alternate rootfs, for use by automatic upgrades.                        |
-| 6	        | KERN-C kernel C                           | Minimal-size partition for future third kernel.                         |
-| 7	        | ROOT-C rootfs C                           | Minimal-size partition for future third rootfs.                         |
-| 8	        | OEM OEM customization                     | Web pages, links, themes, etc. from OEM.                                |
-| 9	        | RESERVED MiniOS A	                        | Recovery partition A                                                    |
-| 10	      | RESERVED MiniOS B	                        | Recovery partition B, for upgrades. Must reside at the end of the disk. |
-| 11	      | RFWF Hibernate	                          | Small partition reserved for hibernation state.                         |
+| 1         | STATE user state, aka "stateful partition | User's browsing history, downloads, cache, etc. Encrypted per-user.     |
+| 2         | KERN-A kernel A                           | Initially installed kernel.                                             |
+| 3         | ROOT-A rootfs A                           | Initially installed rootfs.                                             |
+| 4         | KERN-B kernel B                           | Alternate kernel, for use by automatic upgrades.                        |
+| 5         | ROOT-B rootfs B                           | Alternate rootfs, for use by automatic upgrades.                        |
+| 6         | KERN-C kernel C                           | Minimal-size partition for future third kernel.                         |
+| 7         | ROOT-C rootfs C                           | Minimal-size partition for future third rootfs.                         |
+| 8         | OEM OEM customization                     | Web pages, links, themes, etc. from OEM.                                |
+| 9         | RESERVED MiniOS A                         | Recovery partition A                                                    |
+| 10	      | RESERVED MiniOS B                         | Recovery partition B, for upgrades. Must reside at the end of the disk. |
+| 11	      | RFWF Hibernate                            | Small partition reserved for hibernation state.                         |
 | 12	      | EFI-SYSTEM EFI System Partition           | Contains 64-bit grub2 bootloader for EFI BIOSes, and second-stage syslinux bootloader for legacy BIOSes. |
 
 Each minimal-size partition (including the C kernel and C rootfs) is only 512 bytes, and is shoved into some space lost to filesystem alignment (between the primary partition table and the stateful partition). 64M of empty space is set aside for use by those reserved partitions if they ever need it.
 
-Bootable USB keys have the same layout, except that kernel B and rootfs B are minimal-size, and partition 1 is limited to 720M. The total USB image size is around 1.5G. When the USB image is installed on a fixed drive, the B image is duplicated from the A image, and partition 1 is made as large as possible so that the entire disk is in use.
-
-We want to use partition 6 or 7 to store our Linux installation. 
+We want to use partition 6 and 7 to store our Linux installation. One will become ```/boot```, the other will become ```/```.
 This is made possible because the _physical_ layout on the Disk is actuall different from the GPT partitioning table:
 ![Chrome OS physical partitioning](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_partition_layout.png?raw=true)
 
 With this understood, it becomes time to think about the sizes you want to allocate:
 The current plan is to use 10 GB for STATE and the remaining space for Linux.
 
-The command we will be using throughout this section is cgpt, which handles partitions on Chrome OS. **It is quite important that Chrome OS is the only thing that touches your partitions**. Alledgely, manipulating the partitions with other tools causes the "Chrome OS is missing or damaged".
+The command we will be using throughout this section is ```cgpt```, which handles partitions on Chrome OS. **It is quite important that Chrome OS is the only thing that touches your partitions**. Manipulating the partitions with ANY other tools did cause errors for me: "Chrome OS is missing or damaged".
 
-cpgt requires superuser privileges to run, and always takes as an argument the device it will work on. 
-For eMMC backed-computers, this will likely be /dev/mmcblk0; if you have an SSD this might be /dev/sda. 
+```cpgt``` requires superuser privileges to run, and always takes as an argument the device it will work on. 
+For eMMC backed-computers like my i5 Pixelbook, this is ```/dev/mmcblk0``` (if you have an SSD it might be ```/dev/sda```).
 
-According to [this guide](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/), you can do this all by hand:
+This guide [this guide](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/), explains how we will do partitioning by hand:
 
 First, list the partitions on the disk: 
 ```
@@ -182,7 +177,6 @@ $ sudo cgpt show /dev/mmcblk0
 The partitions are listed with their labels, partition number, start block, and size. Blocks are 512 bytes in length; notice that while the table is listed in logical order, it is not in physical order–the blocks are actually in a different order on disk.
 
 It is recommended that you create - and understand - a table like below to grasp the logical order of partitions:
-
 
 | Number | Label      | Start    | Size     |
 | ------ | ---------- | -------- | -------- | 
