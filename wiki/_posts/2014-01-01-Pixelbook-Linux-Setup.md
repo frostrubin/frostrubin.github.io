@@ -34,6 +34,7 @@ This will put Chrome OS into "Developer Mode" but we won't enable additional "De
 - Google Pixelbook
 - USB Stick for Linux install Image (4GB to 8GB)
 - USB Stick for Chrome OS Recovery Image (8GB)
+- USB Stick for Ubuntu Live
 
 ## Preparations
 You **MUST** prepare a USB Stick with a Chrome OS Recovery Image. If anything goes wrong during the installation/setup procedure, the device might end up 
@@ -284,7 +285,7 @@ With this done, you can reboot the system:
 sudo reboot
 ```
 
-When Chrome OS boots up, it will repair itself, taking about five minutes (there’s a small, somewhat accurate timer in the top left that tracks progress). Once it’s done booting, drop back into a shell; we now need to format the new partitions as ext4 so they will be usable from Linux.
+When Chrome OS boots up, you will hear two loud BEEPs again, and the OS will repair itself, taking about five minutes (there’s a small, somewhat accurate timer in the top left that tracks progress). Once it’s done booting, drop back into a shell; we now need to format the new partitions as ext4 so they will be usable from Linux.
 
 Once you’re back in a shell, use ```mkfs.ext4``` to initialize the partitions we will be using for Linux (KERN-C and ROOT-C, which are the sixth and seventh partitions in /dev/mmcblk0):
 
@@ -306,13 +307,14 @@ sudo crossystem dev_boot_altfw=1
 - Plug the USB drive with the Linux Installer into the Pixelbook. Avoid using a USB hub.
 - Reboot by typing ```sudo reboot```
 - On the "OS verification is OFF" screen press CTRL+L to boot SeaBIOS.
-- Press ESC to get the SeaBIOS Boot menu. You only have about 2 seconds for this! Choose the Linxu Install USB Stick.
+- Press ```ESC``` to get the SeaBIOS Boot menu. You only have about 2 seconds for this! Choose the Linxu Install USB Stick.
 - Note that ChromeOS bootloader USB enumeration during boot has been observed to be slow. If you're having trouble booting from USB, it may be helpful to remove other USB devices until the device is through the bootloader and also avoid using a USB hub.
 - Use the Installer to Install Linux. When the Installation Type is to be chosen **make sure to choose "Something else"**
 ![Something Else](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_something_else.png?raw=true)
-- This will take you to the partition editor. Here, you need to modify the KERN-C and ROOT-C partitions. Click on them and them change them to have a “Ext4 journaling file system” (do not format the partitions! Leave the checkbox unchecked!); in addition, change the mount point for the first one to /boot and the second to / (this might cause the installer to prompt about performing a resize. You should be able to just hit back on the dialog and it should work out). 
+- This will take you to the partition editor. Here, you need to modify the KERN-C and ROOT-C partitions. Click on them and them change them to have a "Ext4 journaling file system" (do not format the partitions! Leave the checkbox unchecked!); in addition, change the mount point for the first one to ```/boot``` and the second to ```/``` (this might cause the installer to prompt about performing a resize. You should be able to just hit back on the dialog and it should work out). 
 - Finally, change the device for boot loader installation to where KERN-C is. In the end, it should look something like this:
 ![Partitions](https://github.com/frostrubin/frostrubin.github.io/blob/master/wiki/images/chrome_os_linux_installer_partitions.png?raw=true)
+- If you are installing Debian, the GRUB installation to KERN-C /dev/mmcblk0p6 will come after normal partitioning has been done
 - Going to the next step will probably cause some warnings to pop up about not formatting; just skip through those. **You don't want to format.**
 - If the Linux installer makes any changes to the partitions (other than you having assigned mount points) it will likely result in an unbootable ChromeOS.
 
@@ -371,11 +373,11 @@ GRUB_TERMINAL_OUTPUT=gfxterm
 ##  resume=/dev/sda5          save hibernation state to /dev/sda5
 ##  noresume                  no resume partition (for hibernate)
 ##  noswap                    no swap partition
-##
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash boot=local acpi_osi=Linux acpi_backlight=vendor add_efi_memmap intel_pstate=enable i915.modeset=1 tpm_tis.force=1 tpm_tis.interrupts=0 nmi_watchdog=panic,lapic elevator=noop noresume noswap"
 ```
 
 Using this as a template, my final Debian /etc/defaults/grub file looked like this:
+
 ```
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
@@ -421,18 +423,9 @@ sudo grub-install --boot-directory=/mnt/boot /dev/mmcblk0 --force
 
 Now it is time to leave the ubuntu environment and reboot.
 
-
 ## SeaBios
 - Can be reached via CTRL + L on Boot
 - You may get an error saying “graphics initialization failed”; apparently this is a bug that can be fixed [by typing "help" and pressing enter twice](https://ubuntuforums.org/showthread.php?t=1594003).
-
-## Disable USB Boot
-This does not completely prevent USB boot, since the Legacy Boot Mode (SeaBios) reachable via CTRL + L allows for USB booting too.
-- Boot via CTRL + D
-- Enter VT2
-- sudo crossystem dev_boot_usb=0
-- sudo reboot 
-
 
 ## Troubleshooting
 You’ve done something wrong and now Chrome OS doesn’t work, or you’re being dropped into a GRUB> prompt. 
@@ -466,11 +459,32 @@ ChromeOS uses ```ext4 rw,seclabel,nodev,noatime,commit=600
 I decided to give both ```/boot``` and ```/``` the following options: ```noatime,commit=600```
 Meaning that after copying data in the terminal via mv, cp, rsync, etc. I explictily call ```sync``` in order to be 100% sure to not lose data.
 
-
 ## Linux Specific Fixes
 - Fix Suspend & More: https://wiki.archlinux.org/title/Chrome_OS_devices#Introduction
 - Suspend via Script on specific USB Port: https://itectec.com/ubuntu/ubuntu-how-to-use-a-key-press-to-wake-a-suspended-laptop-when-using-a-kvm-switch/
 - [GitHub > FascinatingCaptain > CBFixesAndTweaks](https://github.com/fascinatingcaptain/CBFixesAndTweaks)
+- Add your user to the sudoers group: login as root, then ```usermod -aG sudo <username>```
+
+### Keyboard Backlight
+```
+# Create LEDS group
+sudo groupadd leds
+# Add user
+sudo usermod -aG leds <username>
+# Add Rules
+sudo nano /lib/udev/rules.d/99-pixelbook.rules
+# Content:
+# Allow members of the "leds" group to write to all leds.
+# This lets non-root users change the keyboard backlight
+# brightness
+
+SUBSYSTEM=="leds", ACTION=="add", RUN+="/bin/chgrp -R leds /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+SUBSYSTEM=="leds", ACTION=="change", ENV{TRIGGER}!="none", RUN+="/bin/chgrp -R leds /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+   
+# Use:
+echo 100 > /sys/class/leds/chromeos\:\:kbd_backlight/brightness
+echo 0 > /sys/class/leds/chromeos\:\:kbd_backlight/brightness
+```
 
 ## Linux Software
 - sudo apt update
