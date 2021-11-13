@@ -21,6 +21,7 @@ It is based on various other guides and hints, listed below.
 - [Medium > Adrian Carroll > How to dual boot ChromeOS and Linux](https://medium.com/@adrian.carroll7/how-to-dual-boot-chromeos-and-linux-a-step-by-step-guide-68ed5b073e1b)
 - [Fascinating Captain > How do I dual boot Chrome OS and Linux using a USB drive](http://www.fascinatingcaptain.com/projects/dual-boot-chrome-os-and-linux/)
 - [Saagar Jha > Dual Booting Chrome OS and elementary OS](https://saagarjha.com/blog/2019/03/13/dual-booting-chrome-os-and-elementary-os/)
+- [Huy Le - Installing Linux on Pixelbook](https://huynle.com/resources/install-linux-pixelbook/)
 
 ## Introduction
 The Goal is to adapt the Pixelbook setup so that it can dual-boot Chrome OS ( in Developer Mode ) and Linux.
