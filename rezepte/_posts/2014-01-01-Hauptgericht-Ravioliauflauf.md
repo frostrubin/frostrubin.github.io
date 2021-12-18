@@ -9,9 +9,8 @@ Zutaten
 -------
 *Für 2 Portionen*
 
-- 1 Koblauchzehe
 - 2 Esslöffel Öl
-- 2 Dosen (850ml) Tomaten
+- 1 Dosen (400ml) gehackte Tomaten
 - 1 Teelöffel Gemüsebrühe
 - 2 Esslöffel Balsamico Essig
 - Salz, Pfeffer
