@@ -2,10 +2,10 @@
 permalink:        pretty
 
 # Setup
-title:            "wiki ✎"
+title:            "wiki"
 tagline:          'My personal wiki'
 description:      'A mixture of code, recipes and other stuff ...'
-url:              http://frostrubin.github.io
+url:              https://frostrubin.github.io
 baseurl:          /
 
 author:
