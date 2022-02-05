@@ -26,6 +26,6 @@ Zubereitung
 3. Tomaten waschen und halbieren. Öl in einer Pfanne erhitzen. 
 4. Spaghetti zu den Linsen geben und nach Packungsangabe garen.
 5. Inzwischen Speck im heißen Öl knusprig auslassen. Zwiebeln kurz mitbraten. Tomaten hinzufügen, kurz mitdünsten. 
-6. Alles mit Wein und Sahne ablöschen und aufkochen.
+6. Alles mit Gemüsebrühe und Sahne ablöschen und aufkochen.
 7. Nudeln und Linsen abgießen, abtropfen lassen und in die Pfanne geben. 
 8. Alles vorsichtig vermengen und mit Salz und Pfeffer würzen.
