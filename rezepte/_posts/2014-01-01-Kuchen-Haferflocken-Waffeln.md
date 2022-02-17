@@ -8,14 +8,14 @@ category: rezepte
 Zutaten
 -------
 - 125 g weiche Butter
-- 75 g brauner Zucker
+- 75 g Zucker
 - Salz
 - je etwas abgeriebene Zitronen- und Orangenschale
 - 3 Eier
 - 125 g Mehl
 - 1 Msp. Backpulver
 - 100 g zarte Haferflocken
-- 5 EL Mineralwasser
+- 7 EL Mineralwasser
 
 Zubereitung
 -----------
