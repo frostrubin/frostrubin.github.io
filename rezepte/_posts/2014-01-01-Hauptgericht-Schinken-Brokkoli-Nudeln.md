@@ -29,4 +29,4 @@ In ein Sieb abgießen, kalt überbrausen, anschließend abtropfen lassen.
 Knoblauch dazupressen und die Sahne dazugießen, bei schwacher Hitze 2 Min. köcheln lassen. 
 4. Gut die Hälfte vom Käse unterrühren und schmelzen lassen, dann vom Herd nehmen.
 5. Nudeln, Schinken und Brokkoli mischen und in der Form verteilen. Die Sauce kräftig mit Salz und Pfeffer würzen und über die Nudeln gießen, 
-mit restlichem Käse bestreuen. Im Ofen (Mitte, Umluft 180°) in 30-35 Min. goldgelb backen.
+mit restlichem Käse bestreuen. Im Ofen (Mitte, Umluft 180°) in 20-25 Min. goldgelb backen.
