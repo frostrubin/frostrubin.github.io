@@ -14,17 +14,14 @@ Zutaten
 - 300g TK-Erbsen
 - 100g Speckwürfel
 - 1 Esslöffel Olivenöl
-- 1 Esslöffel	Butter
 - 50g TK Petersilie
 - 1 Esslöffel TK-Basilikum
 - 50g geriebener Parmesan
 
 Zubereitung
 -----------
-1. Die Nudeln in kochendem Salzwasser nach Packungsangabe bissfest garen. 2 Min. vor Ende der Garzeit die 
-gefrorenen Erbsen mit ins Kochwasser geben, alles erneut zum Kochen bringen und Erbsen bis zum Schluss mitgaren. 
+1. Die Nudeln in kochendem Salzwasser nach Packungsangabe bissfest garen. Wenn das Wasser kocht auch schon die gefrorenen Erbsen mit ins Kochwasser geben.
 Die Erbsen-Nudel-Mischung in ein Sieb abgießen und kurz abtropfen lassen.
-2. Inzwischen den Speck in feine Streifen schneiden. Öl und Butter in einer großen Pfanne erhitzen. 
-Den Speck darin bei mittlerer Hitze 4 Min. braten, bis er knusprig und braun ist.
+2. Öl in einer großen Pfanne erhitzen. Den Speck darin bei mittlerer Hitze 4 Min. braten.
 3. Die Nudel-Erbsen-Mischung in die Pfanne geben, mit Speck, Petersilie, Basilikum und Parmesan vermengen. 
 Alles mit Salz und Pfeffer würzen und 1-2 Min. bei schwacher Hitze ziehen lassen, dann servieren.
