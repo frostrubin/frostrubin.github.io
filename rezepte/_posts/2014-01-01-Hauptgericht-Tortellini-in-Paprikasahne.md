@@ -1,5 +1,5 @@
 ---
-title: Tortellini in Paprikasahne
+title: Hauptgericht Tortellini in Paprikasahne
 
 layout: page
 category: rezepte
