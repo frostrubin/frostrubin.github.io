@@ -1,5 +1,5 @@
 ---
-title: Gyros-Gemüse mit Joghurtsauce
+title: Hauptgericht Gyros-Gemüse mit Joghurtsauce
 
 layout: page
 category: rezepte
