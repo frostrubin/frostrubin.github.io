@@ -7,26 +7,22 @@ category: rezepte
 
 Zutaten
 -------
-- 400g Tortellini
-- 2 Liter instant Fleischbrühe
+- 800g Tortellini
 - 200g Mozzarella
-- 50g Oliven
+- 1 Glas Oliven
 - 100g Butter
 - 100g frisch geriebener Parmesan
 - 4 Esslöffel Sahne
-- Etwas schwarzer Pfeffer aus der Mühle
+- Etwas schwarzer Pfeffer
 
 Zubereitung
 -----------
-1. Die zwei Liter Fleischbrühe herstellen.
-2. Die Tortellini in die kochende Brühe geben und ca. 12-15 Minuten darin ziehen lassen.
-3. Währenddessen den Mozzarella abtropfen lassen und in dünne Scheiben schneiden.
-4. Die Oliven ebenfalls abtropfen und in Streifen schneiden.
-5. Die Tortellini abgießen und abtropfen lassen.
-6. Eine Feuerfeste Form mit etwas Butter einstreichen.
-7. Die Tortellini mit der Hälfte der restlichen Butter, den Olivenstreifen und 50g Parmesan vermischen.
-8. Die Hälfe der Masse in die Form geben und mit den Mozzarellascheiben bedecken.
-9. Noch mit Sahne überträufeln und mit Pfeffer übermahlen.
-10. Dann die restliche Tortellinimasse daraufschichten und mit dem übrigen Parmesan bestreuen.
-11. Die noch übrige Butter in Flöcken darauf verteilen.
-12. Die Form bei 250° in den vorgeheizten Ofen schieben. Für ca. 6-8 überbacken und möglichst sofort in der Form servieren.
+1. Den Ofen auf 200°C Umluft vorheizen
+2. Eine Auflaufform buttern
+3. Die Oliven in kleine Scheiben schneiden. Mozzarella abstropfen und in dünne Scheiben schneiden.
+4. In einer Auflaufform, die Hälfte der Tortellini mit der Hälfte der Oliven und nur ein wenig Parmesan und ein wenig Butter mischen.
+5. Mit allem Mozzarella belegen
+6. Danach die andere Hälfte der Tortellini, gemischt mit der anderen Hälfte der Oliven und etwas Butter oben drauf geben.
+7. Pfeffern, Sahne drüber gießen
+8. Verbleibenden Parmesan darüber geben und mit Butter Flocken becklecksen
+9. Für 10 bis 15 Minuten in den Ofen
