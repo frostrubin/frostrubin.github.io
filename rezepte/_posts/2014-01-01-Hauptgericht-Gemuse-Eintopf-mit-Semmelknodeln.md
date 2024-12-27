@@ -1,5 +1,5 @@
 ---
-title: Gemüse-Eintopf mit Semmelknödeln
+title: Hauptgericht Gemüse-Eintopf mit Semmelknödeln
 
 layout: page
 category: rezepte
