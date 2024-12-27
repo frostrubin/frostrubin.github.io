@@ -1,5 +1,5 @@
 ---
-title: Hauptgericht Kürbispürree mit Bratwurst und Karotten
+title: Hauptgericht Kürbispüree mit Bratwurst und Karotten
 
 layout: page
 category: rezepte
