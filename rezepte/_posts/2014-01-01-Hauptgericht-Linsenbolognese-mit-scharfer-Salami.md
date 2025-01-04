@@ -1,5 +1,5 @@
 ---
-title: Hauptgericht Penne mit Linsenbolognese und scharfer Salami
+title: Hauptgericht Linsenbolognese mit scharfer Salami
 
 layout: page
 category: rezepte
