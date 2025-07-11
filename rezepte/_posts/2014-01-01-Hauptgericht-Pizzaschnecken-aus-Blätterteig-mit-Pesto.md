@@ -1,5 +1,5 @@
 ---
-title: Hauptgericht Blätterteig Pizzaschnecken mit Pesto
+title: Hauptgericht Pizzaschnecken aus Blätterteig mit Pesto
 
 layout: page
 category: rezepte
