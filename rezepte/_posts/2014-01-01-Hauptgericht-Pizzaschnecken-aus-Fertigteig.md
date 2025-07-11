@@ -10,7 +10,7 @@ Zutaten
 *Für 8 bis 10 Schnecken*
 
 - 1 Packung Backfertiger Pizzateig (600g)
-- 70g	Salami
+- 70g Salami
 - 1 Päckchen passierte Tomaten
 - 100g	Gouda gerieben
 - Pizzagewürz
