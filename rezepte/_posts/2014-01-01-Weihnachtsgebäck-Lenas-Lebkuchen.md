@@ -25,4 +25,4 @@ Zubereitung
 3. Mindestens 2 Stunden kühlen lassen, im Kühlschrank
 4. Ausrollen, 1cm dick
 5. Plätzchen ausstechen, mit Milch bestreichen. ggf. Zuckerstreusel draufgeben und leicht andrücken
-6. 180° für 15 Minuten mittlere Schiene backen
+6. 180° für 15 Minuten mittlere Schiene Ober-/Unterhitze backen
